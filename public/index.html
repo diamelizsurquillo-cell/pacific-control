@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacific Control S.A.C. — Dashboard de Operaciones en Vivo</title>
+  <meta name="description" content="Dashboard operativo y financiero en tiempo real para Pacific Control S.A.C. Control de órdenes de inspección, gastos operativos y análisis geoespacial.">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/charts.css">
+
+  <!-- External Libraries (CDN) -->
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+  <!-- Loading Initial Overlay -->
+  <div id="loadingOverlay" class="loading-overlay" style="background: #ffffff; color: var(--text-primary);">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" style="color: var(--text-primary);">Conectando con Google Sheets en tiempo real...</div>
+    <div style="font-size: var(--text-xs); color: var(--text-muted);">Sincronizando catálogos de Lugar, Inspector y Órdenes</div>
+  </div>
+
+  <div class="app-wrapper">
+    <!-- Topbar Header -->
+    <header class="topbar">
+      <div class="topbar__brand">
+        <img src="/LOGO-COLORES.png" alt="Pacific Control Logo" style="height: 46px; width: auto; object-fit: contain; display: block;" />
+        <div style="border-left: 2px solid var(--border-default); padding-left: var(--space-3); margin-left: var(--space-1);">
+          <h1 class="topbar__title" style="margin: 0; font-size: var(--text-base); color: var(--primary-500); font-weight: 800; letter-spacing: -0.01em;">DASHBOARD OPERATIVO</h1>
+          <div class="topbar__subtitle" style="color: var(--text-muted); font-size: 0.7rem; font-weight: 600;">Control & Rendición de Gastos 2026</div>
+        </div>
+      </div>
+
+      <div class="topbar__actions">
+        <!-- Live Connection Badge -->
+        <div id="liveStatusBadge" class="badge badge--success" style="padding: 4px 12px; font-size: var(--text-xs); cursor: pointer;" title="Conectado a Google Sheets API v4">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#22c55e; margin-right:4px;" class="pulse-dot"></span>
+          <span id="liveStatusText">🟢 EN VIVO</span>
+        </div>
+
+        <!-- Auto-Refresh Selector -->
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <label for="autoRefreshSelect" style="font-size: var(--text-xs); color: var(--text-secondary); white-space: nowrap;">Auto-refresco:</label>
+          <select id="autoRefreshSelect" class="filter-select" style="padding: 4px 28px 4px 8px; min-width: 105px; font-size: var(--text-xs);">
+            <option value="0">Pausado</option>
+            <option value="30">Cada 30s</option>
+            <option value="60" selected>Cada 60s</option>
+            <option value="120">Cada 2 min</option>
+          </select>
+        </div>
+
+        <!-- Manual Refresh Button -->
+        <button id="btnRefresh" class="topbar__refresh-btn" title="Forzar sincronización inmediata con Google Sheets">
+          <svg class="refresh-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+          <span>Sincronizar</span>
+        </button>
+
+        <span id="lastUpdatedText" class="topbar__timestamp">Sincronizando...</span>
+      </div>
+    </header>
+
+    <!-- Global Interactive Filter Bar -->
+    <nav class="filter-bar" aria-label="Filtros del dashboard">
+      <div class="filter-bar__label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        </svg>
+        <span>Filtros:</span>
+      </div>
+
+      <!-- Free Text Search Box (Specifically for Descripción / Cliente / Acta) -->
+      <div style="position: relative; display: flex; align-items: center; min-width: 220px; flex: 1; max-width: 320px;">
+        <input type="text" id="filterSearch" placeholder="Buscar descripción, cliente, acta..." class="filter-select" style="width: 100%; padding-left: 28px; background-image: none;" autocomplete="off">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 9px; color: var(--text-muted); pointer-events: none;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+
+      <!-- Mes Filter -->
+      <select id="filterMes" class="filter-select">
+        <option value="">Todos los Meses</option>
+      </select>
+
+      <!-- Cliente Filter -->
+      <select id="filterCliente" class="filter-select">
+        <option value="">Todos los Clientes</option>
+      </select>
+
+      <!-- Inspector Filter (Resolved dynamically from ID Inspector) -->
+      <select id="filterInspector" class="filter-select">
+        <option value="">Todos los Inspectores</option>
+      </select>
+
+      <!-- Ubicación Filter (Resolved dynamically from ID Lugar) -->
+      <select id="filterUbicacion" class="filter-select">
+        <option value="">Todas las Sedes / Provincias</option>
+      </select>
+
+      <!-- Sector / Tipo Filter -->
+      <select id="filterSector" class="filter-select">
+        <option value="">Todos los Sectores</option>
+      </select>
+
+      <!-- Unidad de Negocio Filter -->
+      <select id="filterUnidadNegocio" class="filter-select">
+        <option value="">Unidad de Negocio</option>
+      </select>
+
+      <!-- Clear Filters Button -->
+      <button id="btnClearFilters" class="filter-clear-btn" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        <span>Limpiar filtros</span>
+        <span id="activeFilterBadge" class="filter-count">0</span>
+      </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- KPI Metric Cards Grid -->
+      <section class="kpi-grid" aria-label="Métricas clave de rendimiento">
+        
+        <!-- Card 1: Total Servicios -->
+        <article class="kpi-card">
+          <div class="kpi-card__header">
+            <div class="kpi-card__icon kpi-card__icon--blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <span id="kpiServiciosTrend" class="badge badge--primary">Órdenes</span>
+          </div>
+          <div id="kpiTotalServicios" class="kpi-card__value">0</div>
+          <div class="kpi-card__label">Órdenes de Inspección</div>
+        </article>
+
+        <!-- Card 2: Clientes Únicos -->
+        <article class="kpi-card">
+          <div class="kpi-card__header">
+            <div class="kpi-card__icon kpi-card__icon--cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="badge badge--info">Cartera</span>
+          </div>
+          <div id="kpiClientesUnicos" class="kpi-card__value">0</div>
+          <div class="kpi-card__label">Clientes Atendidos</div>
+        </article>
+
+        <!-- Card 3: Gasto Operativo Real -->
+        <article class="kpi-card">
+          <div class="kpi-card__header">
+            <div class="kpi-card__icon kpi-card__icon--amber">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <span id="kpiDesviacionBadge" class="badge badge--warning">GO Real</span>
+          </div>
+          <div id="kpiGastoTotalReal" class="kpi-card__value">S/ 0.00</div>
+          <div class="kpi-card__label">Gasto Operativo Ejecutado</div>
+        </article>
+
+        <!-- Card 4: Gasto Solicitado / Presupuestado -->
+        <article class="kpi-card">
+          <div class="kpi-card__header">
+            <div class="kpi-card__icon kpi-card__icon--purple">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <line x1="6" y1="8" x2="6.01" y2="8"></line>
+                <line x1="10" y1="8" x2="10.01" y2="8"></line>
+                <line x1="14" y1="8" x2="14.01" y2="8"></line>
+              </svg>
+            </div>
+            <span class="badge badge--purple">Presupuesto</span>
+          </div>
+          <div id="kpiGastoSolicitado" class="kpi-card__value">S/ 0.00</div>
+          <div class="kpi-card__label">Monto Solicitado</div>
+        </article>
+
+        <!-- Card 5: Cobertura / Sedes Activas -->
+        <article class="kpi-card">
+          <div class="kpi-card__header">
+            <div class="kpi-card__icon kpi-card__icon--green">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path>
+              </svg>
+            </div>
+            <span id="kpiSedesBadge" class="badge badge--success">Nacional</span>
+          </div>
+          <div id="kpiSedesActivas" class="kpi-card__value">0</div>
+          <div class="kpi-card__label">Sedes con Operación</div>
+        </article>
+
+      </section>
+
+      <!-- Charts Row 1: Tendencia Mensual & Distribución por Inspector -->
+      <section class="charts-grid">
+        
+        <!-- Chart 1: Evolución Mensual -->
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div>
+              <h2 class="chart-card__title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-400);">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Evolución Mensual: Servicios vs Gasto</span>
+              </h2>
+              <div class="chart-card__subtitle">Relación entre número de inspecciones y desembolsos operativos</div>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 290px;">
+            <canvas id="chartMensual"></canvas>
+          </div>
+        </article>
+
+        <!-- Chart 2: Servicios por Inspector (Dynamic from ID Inspector) -->
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div>
+              <h2 class="chart-card__title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-400);">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Carga Operativa por Inspector</span>
+              </h2>
+              <div class="chart-card__subtitle">Mapeado en tiempo real desde la pestaña <code>ID Inspector</code></div>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 290px;">
+            <canvas id="chartInspectores"></canvas>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Charts Row 2: Distribución por Sector & Mapa Geográfico del Perú -->
+      <section class="charts-grid">
+
+        <!-- Chart 3: Distribución por Sector / Producto -->
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div>
+              <h2 class="chart-card__title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #a78bfa;">
+                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                  <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                </svg>
+                <span>Distribución por Sector Operativo</span>
+              </h2>
+              <div class="chart-card__subtitle">Clasificación basada en órdenes de inspección y muestreo</div>
+            </div>
+          </div>
+          <div class="chart-container chart-container--donut" style="height: 290px;">
+            <canvas id="chartSectores"></canvas>
+          </div>
+        </article>
+
+        <!-- Chart 4: Gastos por Unidad de Negocio -->
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div>
+              <h2 class="chart-card__title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #22c55e;">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span>Gastos por Unidad de Negocio</span>
+              </h2>
+              <div class="chart-card__subtitle">Gasto real ejecutado según rendición GO</div>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 290px;">
+            <canvas id="chartUnidadNegocio"></canvas>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Map Section: Cobertura Territorial Leaflet -->
+      <section class="map-section">
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div>
+              <h2 class="chart-card__title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-400);">
+                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                  <line x1="8" y1="2" x2="8" y2="18"></line>
+                  <line x1="16" y1="6" x2="16" y2="22"></line>
+                </svg>
+                <span>Mapa Operativo Nacional (Perú)</span>
+              </h2>
+              <div class="chart-card__subtitle">Sedes y provincias resueltas dinámicamente desde <code>ID Lugar</code></div>
+            </div>
+            <div style="font-size: var(--text-xs); color: var(--text-muted);">
+              Haz clic en los puntos del mapa para ver el detalle por sede
+            </div>
+          </div>
+          <div id="peruMap" class="map-container"></div>
+        </article>
+      </section>
+
+      <!-- Interactive Data Table Section -->
+      <section class="table-section">
+        <div class="table-wrapper">
+          <div class="table-wrapper__header">
+            <div class="table-wrapper__title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-400);">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              <span>Registro Detallado de Órdenes & Servicios</span>
+              <span id="tableRecordCount" class="badge badge--neutral" style="margin-left: 8px;">0 registros</span>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <!-- Export CSV Button -->
+              <button id="btnExportCSV" class="export-btn" title="Descargar datos filtrados en formato CSV">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Exportar CSV</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Responsive Table Container -->
+          <div style="overflow-x: auto;">
+            <table id="servicesTable" class="dataTable" style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th>N° Acta / Cotiz.</th>
+                  <th>Fecha</th>
+                  <th>Cliente</th>
+                  <th>Descripción del Servicio (Texto)</th>
+                  <th>Inspector Asignado</th>
+                  <th>Sede / Lugar</th>
+                  <th>Sector</th>
+                  <th>Gasto Real</th>
+                  <th>Detalle</th>
+                </tr>
+              </thead>
+              <tbody id="servicesTableBody">
+                <!-- Rows dynamically injected by app.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-4); flex-wrap: wrap; gap: 10px;">
+            <div id="tablePaginationInfo" style="font-size: var(--text-xs); color: var(--text-muted);">
+              Mostrando registros 1 al 10
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;" id="paginationButtons">
+              <!-- Page controls -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Detail Modal for Order Breakdown -->
+    <div id="detailModal" class="loading-overlay" style="display: none; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(6px);">
+      <div style="background: #ffffff; border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); max-width: 650px; width: 92%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); border-bottom: 1px solid var(--border-default); padding-bottom: var(--space-3);">
+          <div>
+            <h3 id="modalTitle" style="margin: 0; font-size: var(--text-lg); color: var(--text-primary);">Detalle de Orden de Servicio</h3>
+            <span id="modalSubtitle" style="font-size: var(--text-xs); color: var(--primary-600);"></span>
+          </div>
+          <button id="modalCloseBtn" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; padding: 4px;">&times;</button>
+        </div>
+        <div id="modalContent">
+          <!-- Dynamic details -->
+        </div>
+      </div>
+    </div>
+
+    <!-- App Footer -->
+    <footer class="footer">
+      <div>PACIFIC CONTROL S.A.C. &bull; Sistema de Inteligencia Operativa y Rendición de Gastos 2026</div>
+      <div style="font-size: var(--text-xs); margin-top: 4px; color: var(--text-muted);">
+        Conexión directa vía Google Sheets API v4 &bull; Mapeo dinámico de ID Lugar & ID Inspector &bull; Todos los derechos reservados
+      </div>
+    </footer>
+  </div>
+
+  <!-- Application Logic Modules -->
+  <script src="/js/api.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/map.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

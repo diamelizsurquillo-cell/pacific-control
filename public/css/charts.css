@@ -1,0 +1,180 @@
+/* ============================================
+   PACIFIC CONTROL — Charts
+   Chart.js containers and Leaflet map overrides
+   ============================================ */
+
+/* --- Chart Container --- */
+.chart-container {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Doughnut chart - slightly smaller */
+.chart-container--donut {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* --- Custom Chart Legend --- */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  justify-content: center;
+}
+
+.chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.chart-legend__item:hover {
+  opacity: 0.8;
+}
+
+.chart-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* --- Leaflet Map Overrides --- */
+.map-container {
+  width: 100%;
+  height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+/* Light map container */
+.leaflet-container {
+  background: #f8fafc;
+  font-family: var(--font-family);
+}
+
+.leaflet-tile-pane {
+  filter: none;
+}
+
+/* Custom popup styling */
+.leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  color: var(--text-primary) !important;
+}
+
+.leaflet-popup-tip {
+  background: #ffffff !important;
+  border-color: var(--border-default) !important;
+}
+
+.leaflet-popup-content {
+  margin: var(--space-3) var(--space-4) !important;
+  font-size: var(--text-sm) !important;
+  line-height: 1.6 !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--text-muted) !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: var(--text-primary) !important;
+}
+
+.map-popup__title {
+  font-weight: 700;
+  font-size: var(--text-base);
+  margin-bottom: var(--space-2);
+  color: var(--primary-300);
+}
+
+.map-popup__stat {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 2px 0;
+}
+
+.map-popup__stat-label {
+  color: var(--text-secondary);
+}
+
+.map-popup__stat-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Custom marker cluster styles */
+.marker-cluster {
+  background: rgba(13, 127, 208, 0.3) !important;
+}
+
+.marker-cluster div {
+  background: var(--primary-500) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  font-family: var(--font-family) !important;
+}
+
+/* Leaflet controls */
+.leaflet-control-zoom a {
+  background: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-default) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--bg-hover) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(11, 17, 32, 0.7) !important;
+  color: var(--text-muted) !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--text-secondary) !important;
+}
+
+/* --- Chart Summary Stats --- */
+.chart-stats {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-default);
+}
+
+.chart-stat {
+  text-align: center;
+  flex: 1;
+}
+
+.chart-stat__value {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.chart-stat__label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}

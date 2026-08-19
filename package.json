@@ -1,0 +1,23 @@
+{
+  "name": "dashboard-pacific-control",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dashboard de operaciones Pacific Control S.A.C.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "vercel:dev": "vercel dev",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "vercel": "^39.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
