@@ -18,17 +18,26 @@ const Api = (function() {
     notifyStatus('loading', forceRefresh ? 'Sincronizando con Google Sheets...' : 'Cargando datos...');
 
     try {
-      const url = `/api/dashboard${forceRefresh ? '?refresh=true' : ''}`;
-      const response = await fetch(url, {
-        headers: {
-          'Accept': 'application/json',
-          'Cache-Control': forceRefresh ? 'no-cache' : 'default',
-        },
-      });
+      let response;
+      try {
+        const url = `/api/dashboard${forceRefresh ? '?refresh=true' : ''}`;
+        response = await fetch(url, {
+          headers: {
+            'Accept': 'application/json',
+            'Cache-Control': forceRefresh ? 'no-cache' : 'default',
+          },
+        });
+      } catch (netErr) {
+        // Red / serverless fallida -> ir a estático
+      }
+
+      if (!response || !response.ok) {
+        // Cargar instantáneamente desde el JSON pregenerado
+        response = await fetch('/data/dashboard.json');
+      }
 
       if (!response.ok) {
-        const errorBody = await response.json().catch(() => ({}));
-        throw new Error(errorBody.message || `Error del servidor (${response.status})`);
+        throw new Error(`Error al obtener datos (${response.status})`);
       }
 
       const data = await response.json();

@@ -4,6 +4,7 @@
   "private": true,
   "description": "Dashboard de operaciones Pacific Control S.A.C.",
   "scripts": {
+    "build": "node build-data.js",
     "start": "node server.js",
     "dev": "node server.js",
     "vercel:dev": "vercel dev",
