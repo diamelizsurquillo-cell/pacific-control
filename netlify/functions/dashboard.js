@@ -188,6 +188,15 @@ exports.handler = async function(event, context) {
       porSector[sec].gastoReal += s.gastoReal;
     });
 
+    // Group by Acreditación
+    const porAcreditacion = {};
+    servicios.forEach(s => {
+      const acr = s.acreditacion || 'NO ESPECIFICADO';
+      if (!porAcreditacion[acr]) porAcreditacion[acr] = { count: 0, gastoReal: 0 };
+      porAcreditacion[acr].count++;
+      porAcreditacion[acr].gastoReal += s.gastoReal;
+    });
+
     // Group by Ubicacion
     const porUbicacion = {};
     servicios.forEach(s => {
@@ -216,6 +225,25 @@ exports.handler = async function(event, context) {
         porInspector[insp].count++;
         porInspector[insp].gastoReal += Math.round((s.gastoReal / list.length) * 100) / 100;
       });
+    });
+
+    // Frequency tiering of inspectors
+    const frecuenciaInspectores = {
+      '1 servicio': 0,
+      '2 servicios': 0,
+      '3 servicios': 0,
+      '4 a 10 servicios': 0,
+      '11 a 50 servicios': 0,
+      'Más de 50 servicios': 0,
+    };
+    Object.values(porInspector).forEach(data => {
+      const c = data.count;
+      if (c === 1) frecuenciaInspectores['1 servicio']++;
+      else if (c === 2) frecuenciaInspectores['2 servicios']++;
+      else if (c === 3) frecuenciaInspectores['3 servicios']++;
+      else if (c <= 10) frecuenciaInspectores['4 a 10 servicios']++;
+      else if (c <= 50) frecuenciaInspectores['11 a 50 servicios']++;
+      else frecuenciaInspectores['Más de 50 servicios']++;
     });
 
     // Group by Mes
@@ -247,10 +275,15 @@ exports.handler = async function(event, context) {
       coords: COORDS_PROVINCIA[nombre] || null,
     }));
 
+    const serviciosAcreditados = servicios.filter(s => s.acreditacion === 'ACREDITADO').length;
+    const serviciosNoAcreditados = servicios.filter(s => s.acreditacion === 'NO ACREDITADO').length;
+    const porcentajeAcreditados = totalServicios > 0 ? Math.round((serviciosAcreditados / totalServicios) * 1000) / 10 : 0;
+
     // Filter options
     const filtros = {
       meses: Object.keys(MESES_ORDEN),
       sectores: [...new Set(servicios.map(s => s.sector))].sort(),
+      acreditaciones: [...new Set(servicios.map(s => s.acreditacion))].filter(Boolean).sort(),
       ubicaciones: [...new Set(servicios.map(s => s.ubicacion).filter(u => u !== 'DESCONOCIDO'))].sort(),
       inspectores: [...new Set(servicios.flatMap(s => s.inspectores || [s.inspectorPrincipal]).filter(i => i && i !== 'Sin asignar'))].sort(),
       unidadesNegocio: [...new Set(gastos.map(g => g.unidadNegocio).filter(Boolean))].sort(),
@@ -266,13 +299,19 @@ exports.handler = async function(event, context) {
         gastoPromedio: totalServicios > 0 ? Math.round((gastoTotalReal / totalServicios) * 100) / 100 : 0,
         serviciosConGasto,
         serviciosSinGasto,
+        serviciosAcreditados,
+        serviciosNoAcreditados,
+        porcentajeAcreditados,
+        sedesCount: Object.keys(porUbicacion).filter(u => u !== 'DESCONOCIDO').length,
         gastosHuerfanosCount: gastosHuerfanos.length,
       },
       agrupaciones: {
         porSector,
+        porAcreditacion,
         porMes: porMesOrdenado,
         porUbicacion,
         porInspector,
+        frecuenciaInspectores,
         porUnidadNegocio,
       },
       mapa: ubicacionesConCoords,

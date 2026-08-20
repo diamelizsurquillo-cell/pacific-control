@@ -104,7 +104,8 @@ const DashboardMap = (function() {
 
     // Auto-fit view if valid coordinates exist
     if (bounds.length > 0) {
-      _map.fitBounds(bounds, { padding: [40, 40], maxZoom: 8 });
+      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 640;
+      _map.fitBounds(bounds, { padding: isMobile ? [15, 15] : [40, 40], maxZoom: 8 });
     }
   }
 

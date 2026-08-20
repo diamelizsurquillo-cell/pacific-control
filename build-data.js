@@ -21,7 +21,31 @@ const {
   resolverLugar,
 } = require('./lib/data-maps');
 
+// Load environment variables from .env.local if exists
+const envPath = path.join(__dirname, '.env.local');
+if (fs.existsSync(envPath)) {
+  const content = fs.readFileSync(envPath, 'utf8');
+  content.split('\n').forEach(line => {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) return;
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx !== -1) {
+      const key = trimmed.slice(0, eqIdx).trim();
+      let val = trimmed.slice(eqIdx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (!process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  });
+}
+
 async function generateData() {
+  const sheetIdOrdenes = process.env.SHEET_ID_ORDENES;
+  const sheetIdGastos = process.env.SHEET_ID_GASTOS;
+
   const ordenesRanges = [
     'SERVICIOS!A3:W2000',
     "'ID Lugar'!B3:D100",
@@ -30,9 +54,10 @@ async function generateData() {
   ];
 
   const [ordenesDataBatch, gastosRows] = await Promise.all([
-    readMultipleRanges('local', ordenesRanges),
-    readRange('local', "'Gastos Operativos GO 2026'!A1:Q700"),
+    readMultipleRanges(sheetIdOrdenes, ordenesRanges),
+    readRange(sheetIdGastos, "'Gastos Operativos GO 2026'!A1:Q700"),
   ]);
+
 
   const dynamicLugares = parseIdLugar(ordenesDataBatch["'ID Lugar'!B3:D100"] || []);
   const dynamicInspectores = parseIdInspector(ordenesDataBatch["'ID Inspector'!B3:D150"] || []);
@@ -85,6 +110,7 @@ async function generateData() {
       sector: extraerSector(o.descripcion),
       fechaInspeccion: o.fechaInspeccion,
       observaciones: o.observaciones,
+      acreditacion: o.acreditacion || 'NO ESPECIFICADO',
       codigoDocumento: o.codigoDocumento,
       tieneGasto: gastosAsociados.length > 0,
       gastoSolicitado,
@@ -117,6 +143,14 @@ async function generateData() {
     porSector[sec].gastoReal += s.gastoReal;
   });
 
+  const porAcreditacion = {};
+  servicios.forEach(s => {
+    const acr = s.acreditacion || 'NO ESPECIFICADO';
+    if (!porAcreditacion[acr]) porAcreditacion[acr] = { count: 0, gastoReal: 0 };
+    porAcreditacion[acr].count++;
+    porAcreditacion[acr].gastoReal += s.gastoReal;
+  });
+
   const porUbicacion = {};
   servicios.forEach(s => {
     const ub = s.ubicacion || 'DESCONOCIDO';
@@ -142,6 +176,25 @@ async function generateData() {
       porInspector[insp].count++;
       porInspector[insp].gastoReal += Math.round((s.gastoReal / list.length) * 100) / 100;
     });
+  });
+
+  // Frequency tiering of inspectors
+  const frecuenciaInspectores = {
+    '1 servicio': 0,
+    '2 servicios': 0,
+    '3 servicios': 0,
+    '4 a 10 servicios': 0,
+    '11 a 50 servicios': 0,
+    'Más de 50 servicios': 0,
+  };
+  Object.values(porInspector).forEach(data => {
+    const c = data.count;
+    if (c === 1) frecuenciaInspectores['1 servicio']++;
+    else if (c === 2) frecuenciaInspectores['2 servicios']++;
+    else if (c === 3) frecuenciaInspectores['3 servicios']++;
+    else if (c <= 10) frecuenciaInspectores['4 a 10 servicios']++;
+    else if (c <= 50) frecuenciaInspectores['11 a 50 servicios']++;
+    else frecuenciaInspectores['Más de 50 servicios']++;
   });
 
   const porMes = {};
@@ -170,9 +223,14 @@ async function generateData() {
     coords: COORDS_PROVINCIA[nombre] || null,
   }));
 
+  const serviciosAcreditados = servicios.filter(s => s.acreditacion === 'ACREDITADO').length;
+  const serviciosNoAcreditados = servicios.filter(s => s.acreditacion === 'NO ACREDITADO').length;
+  const porcentajeAcreditados = totalServicios > 0 ? Math.round((serviciosAcreditados / totalServicios) * 1000) / 10 : 0;
+
   const filtros = {
     meses: Object.keys(MESES_ORDEN),
     sectores: [...new Set(servicios.map(s => s.sector))].sort(),
+    acreditaciones: [...new Set(servicios.map(s => s.acreditacion))].filter(Boolean).sort(),
     ubicaciones: [...new Set(servicios.map(s => s.ubicacion).filter(u => u !== 'DESCONOCIDO'))].sort(),
     inspectores: [...new Set(servicios.flatMap(s => s.inspectores || [s.inspectorPrincipal]).filter(i => i && i !== 'Sin asignar'))].sort(),
     unidadesNegocio: [...new Set(gastos.map(g => g.unidadNegocio).filter(Boolean))].sort(),
@@ -188,13 +246,19 @@ async function generateData() {
       gastoPromedio: totalServicios > 0 ? Math.round((gastoTotalReal / totalServicios) * 100) / 100 : 0,
       serviciosConGasto: servicios.filter(s => s.tieneGasto).length,
       serviciosSinGasto: servicios.filter(s => !s.tieneGasto).length,
+      serviciosAcreditados,
+      serviciosNoAcreditados,
+      porcentajeAcreditados,
+      sedesCount: Object.keys(porUbicacion).filter(u => u !== 'DESCONOCIDO').length,
       gastosHuerfanosCount: gastosHuerfanos.length,
     },
     agrupaciones: {
       porSector,
+      porAcreditacion,
       porMes: porMesOrdenado,
       porUbicacion,
       porInspector,
+      frecuenciaInspectores,
       porUnidadNegocio,
     },
     mapa: ubicacionesConCoords,

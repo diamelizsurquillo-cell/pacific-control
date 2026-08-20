@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     filterCliente: document.getElementById('filterCliente'),
     filterInspector: document.getElementById('filterInspector'),
     filterUbicacion: document.getElementById('filterUbicacion'),
+    filterAcreditacion: document.getElementById('filterAcreditacion'),
     filterSector: document.getElementById('filterSector'),
     filterUnidadNegocio: document.getElementById('filterUnidadNegocio'),
     btnClearFilters: document.getElementById('btnClearFilters'),
@@ -47,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // KPIs
     kpiTotalServicios: document.getElementById('kpiTotalServicios'),
     kpiClientesUnicos: document.getElementById('kpiClientesUnicos'),
+    kpiAcreditadosValue: document.getElementById('kpiAcreditadosValue'),
+    kpiAcreditadosSub: document.getElementById('kpiAcreditadosSub'),
+    kpiAcreditacionBadge: document.getElementById('kpiAcreditacionBadge'),
     kpiGastoTotalReal: document.getElementById('kpiGastoTotalReal'),
     kpiGastoSolicitado: document.getElementById('kpiGastoSolicitado'),
     kpiSedesActivas: document.getElementById('kpiSedesActivas'),
@@ -120,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { el: els.filterCliente, key: 'cliente' },
       { el: els.filterInspector, key: 'inspector' },
       { el: els.filterUbicacion, key: 'ubicacion' },
+      { el: els.filterAcreditacion, key: 'acreditacion' },
       { el: els.filterSector, key: 'sector' },
       { el: els.filterUnidadNegocio, key: 'unidadNegocio' },
     ];
@@ -135,12 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Clear filters
     els.btnClearFilters.addEventListener('click', () => {
-      state.filtros = { search: '', mes: '', cliente: '', inspector: '', ubicacion: '', sector: '', unidadNegocio: '' };
+      state.filtros = { search: '', mes: '', cliente: '', inspector: '', ubicacion: '', acreditacion: '', sector: '', unidadNegocio: '' };
       els.filterSearch.value = '';
       els.filterMes.value = '';
       if (els.filterCliente) els.filterCliente.value = '';
       els.filterInspector.value = '';
       els.filterUbicacion.value = '';
+      if (els.filterAcreditacion) els.filterAcreditacion.value = '';
       els.filterSector.value = '';
       els.filterUnidadNegocio.value = '';
       state.pagination.page = 1;
@@ -205,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (els.filterCliente) populateSelect(els.filterCliente, filtros.clientes || [], 'Todos los Clientes');
     populateSelect(els.filterInspector, filtros.inspectores || [], 'Todos los Inspectores');
     populateSelect(els.filterUbicacion, filtros.ubicaciones || [], 'Todas las Sedes / Provincias');
+    if (els.filterAcreditacion) populateSelect(els.filterAcreditacion, filtros.acreditaciones || [], 'Acreditados y No Acreditados');
     populateSelect(els.filterSector, filtros.sectores || [], 'Todos los Sectores');
     populateSelect(els.filterUnidadNegocio, filtros.unidadesNegocio || [], 'Unidad de Negocio');
   }
@@ -249,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
           s.ubicacion,
           (s.inspectores || []).join(' '),
           s.sector,
+          s.acreditacion,
           s.productoNombre,
         ].filter(Boolean).join(' ').toLowerCase();
 
@@ -259,6 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (f.cliente && s.cliente !== f.cliente) return false;
       if (f.inspector && (!s.inspectores || !s.inspectores.includes(f.inspector))) return false;
       if (f.ubicacion && s.ubicacion !== f.ubicacion) return false;
+      if (f.acreditacion && s.acreditacion !== f.acreditacion) return false;
       if (f.sector && s.sector !== f.sector) return false;
       if (f.unidadNegocio && s.unidadNegocio !== f.unidadNegocio) return false;
 
@@ -282,11 +291,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const gastoReal = list.reduce((sum, s) => sum + (s.gastoReal || 0), 0);
     const gastoSolicitado = list.reduce((sum, s) => sum + (s.gastoSolicitado || 0), 0);
 
+    const acreditados = list.filter(s => s.acreditacion === 'ACREDITADO').length;
+    const noAcreditados = list.filter(s => s.acreditacion === 'NO ACREDITADO').length;
+    const pctAcreditados = totalServicios > 0 ? ((acreditados / totalServicios) * 100).toFixed(1) : '0';
+
     els.kpiTotalServicios.textContent = totalServicios.toLocaleString('es-PE');
     els.kpiClientesUnicos.textContent = clientes.toLocaleString('es-PE');
     els.kpiSedesActivas.textContent = sedes.toLocaleString('es-PE');
     els.kpiGastoTotalReal.textContent = `S/ ${gastoReal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     els.kpiGastoSolicitado.textContent = `S/ ${gastoSolicitado.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    if (els.kpiAcreditadosValue) {
+      els.kpiAcreditadosValue.textContent = `${acreditados} (${pctAcreditados}%)`;
+    }
+    if (els.kpiAcreditadosSub) {
+      els.kpiAcreditadosSub.textContent = `${noAcreditados} No Acreditados`;
+    }
 
     if (gastoSolicitado > 0) {
       const diffPct = Math.round(((gastoReal - gastoSolicitado) / gastoSolicitado) * 100);
@@ -307,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const porMes = {};
     const porInspector = {};
     const porSector = {};
+    const porAcreditacion = {};
     const porUnidadNegocio = {};
     const porUbicacion = {};
 
@@ -327,6 +348,12 @@ document.addEventListener('DOMContentLoaded', () => {
         porInspector[insp].count++;
         porInspector[insp].gastoReal += Math.round((s.gastoReal / inspList.length) * 100) / 100;
       });
+
+      // Acreditación
+      const acr = s.acreditacion || 'NO ESPECIFICADO';
+      if (!porAcreditacion[acr]) porAcreditacion[acr] = { count: 0, gastoReal: 0 };
+      porAcreditacion[acr].count++;
+      porAcreditacion[acr].gastoReal += s.gastoReal;
 
       // Sector
       const sec = s.sector || 'OTROS';
@@ -352,6 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
     DashboardCharts.updateAll({
       porMes,
       porInspector,
+      porAcreditacion,
+      porUbicacion,
       porSector,
       porUnidadNegocio,
     });
@@ -415,6 +444,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ? s.inspectores.join(' / ')
         : (s.inspectorPrincipal || 'Sin asignar');
 
+      const acreditacionBadge = s.acreditacion === 'ACREDITADO'
+        ? `<span class="badge badge--success">✓ Acreditado</span>`
+        : (s.acreditacion === 'NO ACREDITADO'
+          ? `<span class="badge badge--warning">No Acred.</span>`
+          : `<span class="badge badge--neutral">${escapeHtml(s.acreditacion || '-')}</span>`);
+
       html += `
         <tr>
           <td>
@@ -441,6 +476,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </td>
           <td>
             <span class="badge ${sectorBadgeClass}">${escapeHtml(s.sector || 'OTROS')}</span>
+          </td>
+          <td>
+            ${acreditacionBadge}
           </td>
           <td>
             ${gastoFormatted}
@@ -518,26 +556,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (desglose) {
       desgloseHtml = `
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px;">
-          <div class="kpi-card" style="padding: 10px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: 8px;">
+          <div class="kpi-card" style="padding: 8px 10px;">
             <div style="font-size: var(--text-xs); color: var(--text-muted);">Pasajes</div>
-            <div style="font-size: var(--text-base); font-weight: 700; color: var(--text-primary);">S/ ${(desglose.pasajes || 0).toFixed(2)}</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">S/ ${(desglose.pasajes || 0).toFixed(2)}</div>
           </div>
-          <div class="kpi-card" style="padding: 10px;">
+          <div class="kpi-card" style="padding: 8px 10px;">
             <div style="font-size: var(--text-xs); color: var(--text-muted);">Movilidad Local</div>
-            <div style="font-size: var(--text-base); font-weight: 700; color: var(--text-primary);">S/ ${(desglose.movilidad || 0).toFixed(2)}</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">S/ ${(desglose.movilidad || 0).toFixed(2)}</div>
           </div>
-          <div class="kpi-card" style="padding: 10px;">
-            <div style="font-size: var(--text-xs); color: var(--text-muted);">Viáticos / Alimentación</div>
-            <div style="font-size: var(--text-base); font-weight: 700; color: var(--text-primary);">S/ ${(desglose.viaticos || 0).toFixed(2)}</div>
+          <div class="kpi-card" style="padding: 8px 10px;">
+            <div style="font-size: var(--text-xs); color: var(--text-muted);">Viáticos / Alim.</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">S/ ${(desglose.viaticos || 0).toFixed(2)}</div>
           </div>
-          <div class="kpi-card" style="padding: 10px;">
-            <div style="font-size: var(--text-xs); color: var(--text-muted);">Envío de Materiales</div>
-            <div style="font-size: var(--text-base); font-weight: 700; color: var(--text-primary);">S/ ${(desglose.envioMateriales || 0).toFixed(2)}</div>
+          <div class="kpi-card" style="padding: 8px 10px;">
+            <div style="font-size: var(--text-xs); color: var(--text-muted);">Envío Materiales</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">S/ ${(desglose.envioMateriales || 0).toFixed(2)}</div>
           </div>
-          <div class="kpi-card" style="padding: 10px; grid-column: span 2;">
+          <div class="kpi-card" style="padding: 8px 10px;">
             <div style="font-size: var(--text-xs); color: var(--text-muted);">Otros Gastos</div>
-            <div style="font-size: var(--text-base); font-weight: 700; color: var(--text-primary);">S/ ${(desglose.otros || 0).toFixed(2)}</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">S/ ${(desglose.otros || 0).toFixed(2)}</div>
           </div>
         </div>
       `;
@@ -548,41 +586,42 @@ document.addEventListener('DOMContentLoaded', () => {
       : (s.inspectorPrincipal || 'Sin asignar');
 
     els.modalContent.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 14px; font-size: var(--text-sm);">
-        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-md);">
-          <div style="font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 4px;">DESCRIPCIÓN DEL SERVICIO (TEXTO COMPLETO)</div>
-          <div style="color: var(--text-primary); line-height: 1.5;">${escapeHtml(s.descripcion || 'Sin descripción')}</div>
+      <div style="display: flex; flex-direction: column; gap: 12px; font-size: var(--text-sm);">
+        <div style="background: var(--bg-elevated); padding: 10px 12px; border-radius: var(--radius-md);">
+          <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); margin-bottom: 2px;">DESCRIPCIÓN DEL SERVICIO</div>
+          <div style="color: var(--text-primary); line-height: 1.4; font-size: 0.85rem; word-break: break-word;">${escapeHtml(s.descripcion || 'Sin descripción')}</div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
           <div>
-            <span style="color: var(--text-muted);">Sede / Lugar:</span>
-            <strong style="color: var(--text-primary); margin-left: 4px;">${escapeHtml(s.ubicacion)} (Cód. ${s.lugarCodigo || '-'})</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem; display: block;">Sede / Lugar:</span>
+            <strong style="color: var(--text-primary);">${escapeHtml(s.ubicacion)} (Cód. ${s.lugarCodigo || '-'})</strong>
           </div>
           <div>
-            <span style="color: var(--text-muted);">Inspector(es):</span>
-            <strong style="color: var(--primary-300); margin-left: 4px;">${escapeHtml(inspectoresFullText)} (Cód. ${escapeHtml(s.nroInspector || '-')})</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem; display: block;">Inspector(es):</span>
+            <strong style="color: var(--primary-500);">${escapeHtml(inspectoresFullText)} (Cód. ${escapeHtml(s.nroInspector || '-')})</strong>
           </div>
           <div>
-            <span style="color: var(--text-muted);">Fecha Inspección:</span>
-            <strong style="color: var(--text-primary); margin-left: 4px;">${escapeHtml(s.fechaInspeccion || '-')}</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem; display: block;">Fecha Inspección:</span>
+            <strong style="color: var(--text-primary);">${escapeHtml(s.fechaInspeccion || '-')}</strong>
           </div>
           <div>
-            <span style="color: var(--text-muted);">Sector / Producto:</span>
-            <strong style="color: var(--text-primary); margin-left: 4px;">${escapeHtml(s.productoNombre || s.sector)}</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem; display: block;">Sector / Producto:</span>
+            <strong style="color: var(--text-primary);">${escapeHtml(s.productoNombre || s.sector)}</strong>
           </div>
           <div>
-            <span style="color: var(--text-muted);">Unidad de Negocio:</span>
-            <strong style="color: var(--text-primary); margin-left: 4px;">${escapeHtml(s.unidadNegocio || '-')}</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem; display: block;">Unidad de Negocio:</span>
+            <strong style="color: var(--text-primary);">${escapeHtml(s.unidadNegocio || '-')}</strong>
           </div>
           <div>
-            <span style="color: var(--text-muted);">Depositado A:</span>
-            <strong style="color: var(--text-primary); margin-left: 4px;">${escapeHtml(s.depositadoA || '-')}</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem; display: block;">Depositado A:</span>
+            <strong style="color: var(--text-primary);">${escapeHtml(s.depositadoA || '-')}</strong>
           </div>
         </div>
 
-        <div style="border-top: 1px solid var(--border-default); padding-top: 12px;">
-          <h4 style="margin: 0 0 8px 0; color: var(--text-primary); font-size: var(--text-sm);">Desglose de Rendición Operativa GO</h4>
+        <div style="border-top: 1px solid var(--border-default); padding-top: 10px;">
+          <h4 style="margin: 0 0 6px 0; color: var(--text-primary); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase;">Desglose de Rendición Operativa GO</h4>
+
           <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
             <span>Gasto Solicitado: <strong>S/ ${(s.gastoSolicitado || 0).toFixed(2)}</strong></span>
             <span>Gasto Real Ejecutado: <strong style="color: var(--accent-400);">S/ ${(s.gastoReal || 0).toFixed(2)}</strong></span>
