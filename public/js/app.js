@@ -298,11 +298,11 @@ document.addEventListener('DOMContentLoaded', () => {
     els.kpiTotalServicios.textContent = totalServicios.toLocaleString('es-PE');
     els.kpiClientesUnicos.textContent = clientes.toLocaleString('es-PE');
     els.kpiSedesActivas.textContent = sedes.toLocaleString('es-PE');
-    els.kpiGastoTotalReal.textContent = `S/ ${gastoReal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    els.kpiGastoSolicitado.textContent = `S/ ${gastoSolicitado.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    els.kpiGastoTotalReal.innerHTML = `<span class="kpi-card__currency">S/</span> ${gastoReal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    els.kpiGastoSolicitado.innerHTML = `<span class="kpi-card__currency">S/</span> ${gastoSolicitado.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
     if (els.kpiAcreditadosValue) {
-      els.kpiAcreditadosValue.textContent = `${acreditados} (${pctAcreditados}%)`;
+      els.kpiAcreditadosValue.innerHTML = `${acreditados} <span class="kpi-card__pct-badge">${pctAcreditados}%</span>`;
     }
     if (els.kpiAcreditadosSub) {
       els.kpiAcreditadosSub.textContent = `${noAcreditados} No Acreditados`;
