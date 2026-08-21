@@ -5,6 +5,8 @@ const {
   parseIdLugar,
   parseIdInspector,
   parseCodigoProducto,
+  hasLocalExcelFiles,
+  getLocalExcelMTime,
 } = require('../lib/google-sheets');
 const cache = require('../lib/cache');
 const {
@@ -28,8 +30,11 @@ module.exports = async function handler(req, res) {
 
   try {
     const forceRefresh = req.query.refresh === 'true';
+    const excelMTime = getLocalExcelMTime();
+    const cacheCreatedAt = cache.getCreatedAt(CACHE_KEY);
+    const isExcelUpdated = excelMTime > 0 && excelMTime > cacheCreatedAt;
 
-    if (!forceRefresh) {
+    if (!forceRefresh && !isExcelUpdated) {
       const cached = cache.get(CACHE_KEY);
       if (cached) {
         return res.status(200).json({
@@ -40,9 +45,10 @@ module.exports = async function handler(req, res) {
       }
     }
 
+    const hasLocal = hasLocalExcelFiles();
     const sheetId = process.env.SHEET_ID_ORDENES;
-    if (!sheetId) {
-      return res.status(500).json({ error: 'SHEET_ID_ORDENES not configured' });
+    if (!hasLocal && !sheetId) {
+      return res.status(500).json({ error: 'SHEET_ID_ORDENES not configured and no local Excel found' });
     }
 
     const ranges = [

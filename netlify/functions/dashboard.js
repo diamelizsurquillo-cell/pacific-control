@@ -13,6 +13,8 @@ const {
   parseIdInspector,
   parseCodigoProducto,
   isValidCliente,
+  hasLocalExcelFiles,
+  getLocalExcelMTime,
 } = require('../../lib/google-sheets');
 const cache = require('../../lib/cache');
 const {
@@ -45,8 +47,11 @@ exports.handler = async function(event, context) {
   try {
     const params = event.queryStringParameters || {};
     const forceRefresh = params.refresh === 'true';
+    const excelMTime = getLocalExcelMTime();
+    const cacheCreatedAt = cache.getCreatedAt(CACHE_KEY);
+    const isExcelUpdated = excelMTime > 0 && excelMTime > cacheCreatedAt;
 
-    if (!forceRefresh) {
+    if (!forceRefresh && !isExcelUpdated) {
       const cached = cache.get(CACHE_KEY);
       if (cached) {
         return {
@@ -61,14 +66,15 @@ exports.handler = async function(event, context) {
       }
     }
 
+    const hasLocal = hasLocalExcelFiles();
     const sheetIdOrdenes = process.env.SHEET_ID_ORDENES;
     const sheetIdGastos = process.env.SHEET_ID_GASTOS;
 
-    if (!sheetIdOrdenes || !sheetIdGastos) {
+    if (!hasLocal && (!sheetIdOrdenes || !sheetIdGastos)) {
       return {
         statusCode: 500,
         headers,
-        body: JSON.stringify({ error: 'Sheet IDs not configured in environment' }),
+        body: JSON.stringify({ error: 'Sheet IDs not configured and no local Excel files found' }),
       };
     }
 

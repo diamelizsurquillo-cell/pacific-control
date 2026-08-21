@@ -13,8 +13,13 @@ const {
   parseIdInspector,
   parseCodigoProducto,
   isValidCliente,
+  hasLocalExcelFiles,
+  getLocalExcelMTime,
+  clearWorkbookCache,
 } = require('../lib/google-sheets');
 const cache = require('../lib/cache');
+const path = require('path');
+const fs = require('fs');
 const {
   MAPA_LUGAR,
   MAPA_INSPECTOR,
@@ -34,8 +39,17 @@ module.exports = async function handler(req, res) {
 
   try {
     const forceRefresh = req.query.refresh === 'true';
+    if (forceRefresh) {
+      clearWorkbookCache();
+    }
 
-    if (!forceRefresh) {
+    const excelMTime = getLocalExcelMTime();
+    const cacheCreatedAt = cache.getCreatedAt(CACHE_KEY);
+
+    // If local Excel file was edited after the cache was generated, force refresh
+    const isExcelUpdated = excelMTime > 0 && excelMTime > cacheCreatedAt;
+
+    if (!forceRefresh && !isExcelUpdated) {
       const cached = cache.get(CACHE_KEY);
       if (cached) {
         return res.status(200).json({
@@ -46,11 +60,12 @@ module.exports = async function handler(req, res) {
       }
     }
 
+    const hasLocal = hasLocalExcelFiles();
     const sheetIdOrdenes = process.env.SHEET_ID_ORDENES;
     const sheetIdGastos = process.env.SHEET_ID_GASTOS;
 
-    if (!sheetIdOrdenes || !sheetIdGastos) {
-      return res.status(500).json({ error: 'Sheet IDs not configured in environment' });
+    if (!hasLocal && (!sheetIdOrdenes || !sheetIdGastos)) {
+      return res.status(500).json({ error: 'Sheet IDs not configured and no local Excel files found' });
     }
 
     // Fetch dynamic sheets from Órdenes spreadsheet and Gastos Operativos in parallel
@@ -62,12 +77,12 @@ module.exports = async function handler(req, res) {
     ];
 
     const [ordenesDataBatch, gastosRows] = await Promise.all([
-      readMultipleRanges(sheetIdOrdenes, ordenesRanges).catch(async () => {
+      readMultipleRanges(sheetIdOrdenes, ordenesRanges, forceRefresh).catch(async () => {
         // Fallback to individual reads if batch fails
-        const rows = await readRange(sheetIdOrdenes, 'SERVICIOS!A3:W2000');
+        const rows = await readRange(sheetIdOrdenes, 'SERVICIOS!A3:W2000', forceRefresh);
         return { 'SERVICIOS!A3:W2000': rows };
       }),
-      readRange(sheetIdGastos, "'Gastos Operativos GO 2026'!A1:Q700").catch(() => []),
+      readRange(sheetIdGastos, "'Gastos Operativos GO 2026'!A1:Q700", forceRefresh).catch(() => []),
     ]);
 
     // Parse dynamic catalogs from the Sheet
@@ -322,6 +337,17 @@ module.exports = async function handler(req, res) {
     };
 
     cache.set(CACHE_KEY, result);
+
+    // Keep public/data/dashboard.json updated in local environment
+    try {
+      const outDir = path.join(__dirname, '..', 'public', 'data');
+      if (fs.existsSync(outDir)) {
+        fs.writeFileSync(path.join(outDir, 'dashboard.json'), JSON.stringify(result, null, 2));
+      }
+    } catch (e) {
+      // Ignore in read-only serverless environments
+    }
+
     res.status(200).json({ ...result, fromCache: false, cacheAge: 0 });
 
   } catch (error) {
@@ -329,3 +355,4 @@ module.exports = async function handler(req, res) {
     res.status(500).json({ error: 'Failed to build dashboard data', message: error.message });
   }
 };
+

@@ -1,26 +1,26 @@
 {
   "kpis": {
-    "totalServicios": 525,
-    "clientesUnicos": 79,
-    "gastoTotalReal": 92103.25,
-    "gastoTotalSolicitado": 99745.7,
-    "gastoPromedio": 175.43,
-    "serviciosConGasto": 202,
-    "serviciosSinGasto": 323,
-    "serviciosAcreditados": 322,
-    "serviciosNoAcreditados": 185,
-    "porcentajeAcreditados": 61.3,
+    "totalServicios": 531,
+    "clientesUnicos": 82,
+    "gastoTotalReal": 92603.25,
+    "gastoTotalSolicitado": 100245.7,
+    "gastoPromedio": 174.39,
+    "serviciosConGasto": 203,
+    "serviciosSinGasto": 328,
+    "serviciosAcreditados": 325,
+    "serviciosNoAcreditados": 188,
+    "porcentajeAcreditados": 61.2,
     "sedesCount": 20,
     "gastosHuerfanosCount": 31
   },
   "agrupaciones": {
     "porSector": {
       "CONGELADO": {
-        "count": 200,
-        "gastoReal": 12877.689999999999
+        "count": 201,
+        "gastoReal": 13377.689999999999
       },
       "CONSERVA": {
-        "count": 111,
+        "count": 113,
         "gastoReal": 22053.339999999997
       },
       "HARINA": {
@@ -28,11 +28,11 @@
         "gastoReal": 28227.109999999997
       },
       "ALIMENTOS": {
-        "count": 58,
+        "count": 59,
         "gastoReal": 967
       },
       "ACEITE": {
-        "count": 1,
+        "count": 2,
         "gastoReal": 0
       },
       "QUÍMICO": {
@@ -42,6 +42,10 @@
       "OTROS": {
         "count": 15,
         "gastoReal": 2013
+      },
+      "HIGIENE / SANITARIO": {
+        "count": 1,
+        "gastoReal": 0
       },
       "EMBARQUE / AFORO": {
         "count": 1,
@@ -54,11 +58,11 @@
         "gastoReal": 287.25
       },
       "ACREDITADO": {
-        "count": 322,
-        "gastoReal": 42820.68
+        "count": 325,
+        "gastoReal": 43320.68
       },
       "NO ACREDITADO": {
-        "count": 185,
+        "count": 188,
         "gastoReal": 22795.209999999995
       },
       "TESTIFICACIÓN": {
@@ -90,9 +94,9 @@
         "gastoSolicitado": 20900.5
       },
       "MARZO": {
-        "count": 13,
-        "gastoReal": 4249.43,
-        "gastoSolicitado": 4498
+        "count": 14,
+        "gastoReal": 4749.43,
+        "gastoSolicitado": 4998
       },
       "ABRIL": {
         "count": 20,
@@ -120,14 +124,14 @@
         "gastoSolicitado": 4670
       },
       "SIN MES": {
-        "count": 323,
+        "count": 328,
         "gastoReal": 0,
         "gastoSolicitado": 0
       }
     },
     "porUbicacion": {
       "LIMA": {
-        "count": 296,
+        "count": 300,
         "gastoReal": 14465.52,
         "gastoSolicitado": 15166.8
       },
@@ -138,8 +142,8 @@
       },
       "TACNA": {
         "count": 45,
-        "gastoReal": 8880.94,
-        "gastoSolicitado": 10480
+        "gastoReal": 9380.939999999999,
+        "gastoSolicitado": 10980
       },
       "PIURA (PAITA)": {
         "count": 101,
@@ -147,7 +151,7 @@
         "gastoSolicitado": 24399.5
       },
       "CHIMBOTE": {
-        "count": 57,
+        "count": 59,
         "gastoReal": 40463.4,
         "gastoSolicitado": 43726.4
       },
@@ -234,23 +238,23 @@
     },
     "porInspector": {
       "JUNIOR NIMA": {
-        "count": 159,
+        "count": 161,
         "gastoReal": 16591.370000000003
       },
       "JIMMY MORAN": {
-        "count": 98,
+        "count": 99,
         "gastoReal": 2177.75
       },
       "IVAN PIZARRO": {
-        "count": 92,
+        "count": 93,
         "gastoReal": 9319.15
       },
       "EDGAR VELASQUEZ": {
-        "count": 144,
-        "gastoReal": 20696.769999999997
+        "count": 146,
+        "gastoReal": 21444.27
       },
       "SAMUEL PALOMINO": {
-        "count": 45,
+        "count": 46,
         "gastoReal": 2214.5
       },
       "SANDRA CHAVEZ": {
@@ -278,16 +282,12 @@
         "gastoReal": 406
       },
       "ERNESTO SANDOVAL": {
-        "count": 36,
+        "count": 39,
         "gastoReal": 4565.82
       },
       "Inspector 107": {
         "count": 2,
         "gastoReal": 340
-      },
-      "Inspector 100": {
-        "count": 1,
-        "gastoReal": 247.5
       },
       "EDU QUISPE": {
         "count": 2,
@@ -295,7 +295,7 @@
       }
     },
     "frecuenciaInspectores": {
-      "1 servicio": 2,
+      "1 servicio": 1,
       "2 servicios": 2,
       "3 servicios": 1,
       "4 a 10 servicios": 1,
@@ -304,8 +304,8 @@
     },
     "porUnidadNegocio": {
       "PESCA": {
-        "count": 159,
-        "gastoReal": 49566.01
+        "count": 160,
+        "gastoReal": 50066.01000000001
       },
       "CERTIFICACIONES": {
         "count": 3,
@@ -324,7 +324,7 @@
   "mapa": [
     {
       "nombre": "LIMA",
-      "count": 296,
+      "count": 300,
       "gastoReal": 14465.52,
       "gastoSolicitado": 15166.8,
       "coords": {
@@ -345,8 +345,8 @@
     {
       "nombre": "TACNA",
       "count": 45,
-      "gastoReal": 8880.94,
-      "gastoSolicitado": 10480,
+      "gastoReal": 9380.939999999999,
+      "gastoSolicitado": 10980,
       "coords": {
         "lat": -18.0146,
         "lng": -70.2536
@@ -361,7 +361,7 @@
     },
     {
       "nombre": "CHIMBOTE",
-      "count": 57,
+      "count": 59,
       "gastoReal": 40463.4,
       "gastoSolicitado": 43726.4,
       "coords": {
@@ -531,6 +531,7 @@
       "CONSERVA",
       "EMBARQUE / AFORO",
       "HARINA",
+      "HIGIENE / SANITARIO",
       "OTROS",
       "QUÍMICO"
     ],
@@ -564,7 +565,6 @@
       "ERNESTO SANDOVAL",
       "HENRRY HUASASQUICHE",
       "IVAN PIZARRO",
-      "Inspector 100",
       "Inspector 107",
       "Inspector 96",
       "JIMMY MORAN",
@@ -588,6 +588,7 @@
       "AGROINDUSTRIAS NOBEX S.A.",
       "AGROPESCA DEL PERÚ S.A.C.",
       "AGROVET MARKET",
+      "AGROVET MARKET S.A.",
       "ALIMENTOS FINOS DEL PACIFICO S.A.C",
       "AMAZONIC FOODS SAC",
       "ANDECORP GROUP S.A.C.",
@@ -595,6 +596,7 @@
       "BIG FISH EIRL",
       "BMV DEL MAR S.A.C.",
       "BONALI S.A",
+      "BONALI S.A.",
       "BORAL S.A.C.",
       "CEMEX S.A",
       "CORPORACION KIMBERLY S.A.C.",
@@ -657,6 +659,7 @@
       "SURTIFOODS PERU S.A.C.",
       "TECNOLOGIA QUIMICA Y COMERCIO S.A.",
       "UNATUNA PERU S.A.C.",
+      "UNIVERSAL BUSINESS TRADING S.A.C",
       "VALCO TRADE S.A.C.",
       "VIGLIENZONE ADRIATICA S.R.L",
       "WALMAR SEAFOOD PERÚ S.A.C."
@@ -4460,7 +4463,7 @@
       "codigoProducto": "CO",
       "productoNombre": "Conserva",
       "tipoInspeccion": "CO",
-      "nroInspector": "",
+      "nroInspector": "-",
       "inspectores": [
         "Sin asignar"
       ],
@@ -8256,14 +8259,20 @@
       "observaciones": "ACREDITADO",
       "acreditacion": "ACREDITADO",
       "codigoDocumento": "",
-      "tieneGasto": false,
-      "gastoSolicitado": 0,
-      "gastoReal": 0,
+      "tieneGasto": true,
+      "gastoSolicitado": 500,
+      "gastoReal": 500,
       "desviacion": 0,
-      "unidadNegocio": "",
-      "mesRequerido": "",
-      "depositadoA": "",
-      "desglose": null
+      "unidadNegocio": "PESCA",
+      "mesRequerido": "MARZO",
+      "depositadoA": "EDGAR VELASQUEZ",
+      "desglose": {
+        "pasajes": 0,
+        "movilidad": 100,
+        "envioMateriales": 200,
+        "viaticos": 100,
+        "otros": 100
+      }
     },
     {
       "cotizacion": "2026-2530",
@@ -9159,6 +9168,37 @@
       }
     },
     {
+      "cotizacion": "2026-3542",
+      "nroActa": "26-272",
+      "anio": "26",
+      "lugarCodigo": "01",
+      "ubicacion": "LIMA",
+      "nroInspeccion": 272,
+      "codigoProducto": "OT",
+      "productoNombre": "Otros",
+      "tipoInspeccion": "OT",
+      "nroInspector": "5",
+      "inspectores": [
+        "ERNESTO SANDOVAL"
+      ],
+      "inspectorPrincipal": "ERNESTO SANDOVAL",
+      "cliente": "UNIVERSAL BUSINESS TRADING S.A.C",
+      "descripcion": "HIGIENICO SANITARIO",
+      "sector": "HIGIENE / SANITARIO",
+      "fechaInspeccion": "2026-04-20",
+      "observaciones": "NO ACREDITADO",
+      "acreditacion": "NO ACREDITADO",
+      "codigoDocumento": "",
+      "tieneGasto": false,
+      "gastoSolicitado": 0,
+      "gastoReal": 0,
+      "desviacion": 0,
+      "unidadNegocio": "",
+      "mesRequerido": "",
+      "depositadoA": "",
+      "desglose": null
+    },
+    {
       "cotizacion": "2026-3168",
       "nroActa": "26-273",
       "anio": 26,
@@ -9384,12 +9424,12 @@
       "codigoProducto": "CO",
       "productoNombre": "Conserva",
       "tipoInspeccion": "CO",
-      "nroInspector": "100/120",
+      "nroInspector": "103/120",
       "inspectores": [
-        "Inspector 100",
+        "EDGAR VELASQUEZ",
         "IVAN PIZARRO"
       ],
-      "inspectorPrincipal": "Inspector 100",
+      "inspectorPrincipal": "EDGAR VELASQUEZ",
       "cliente": "INVERSIONES GENERALES DEL MAR S.A.C.",
       "descripcion": "MUESTREO DE CONSERVA",
       "sector": "CONSERVA",
@@ -9413,7 +9453,7 @@
       }
     },
     {
-      "cotizacion": "2026-3084\r\n2026-3273",
+      "cotizacion": "2026-3084\n2026-3273",
       "nroActa": "26-280",
       "anio": "26",
       "lugarCodigo": "73",
@@ -9444,7 +9484,7 @@
       "desglose": null
     },
     {
-      "cotizacion": "2026-3084\r\n2026-3273",
+      "cotizacion": "2026-3084\n2026-3273",
       "nroActa": "26-281",
       "anio": "26",
       "lugarCodigo": "73",
@@ -9583,6 +9623,37 @@
       ],
       "inspectorPrincipal": "JIMMY MORAN",
       "cliente": "VIGLIENZONE ADRIATICA S.R.L",
+      "descripcion": "MUESTREO DE ALIMENTOS",
+      "sector": "ALIMENTOS",
+      "fechaInspeccion": "2026-04-27",
+      "observaciones": "NO ACREDITADO",
+      "acreditacion": "NO ACREDITADO",
+      "codigoDocumento": "",
+      "tieneGasto": false,
+      "gastoSolicitado": 0,
+      "gastoReal": 0,
+      "desviacion": 0,
+      "unidadNegocio": "",
+      "mesRequerido": "",
+      "depositadoA": "",
+      "desglose": null
+    },
+    {
+      "cotizacion": "2026-3744",
+      "nroActa": "26-287",
+      "anio": "26",
+      "lugarCodigo": "01",
+      "ubicacion": "LIMA",
+      "nroInspeccion": 287,
+      "codigoProducto": "OT",
+      "productoNombre": "Otros",
+      "tipoInspeccion": "OT",
+      "nroInspector": "119",
+      "inspectores": [
+        "JIMMY MORAN"
+      ],
+      "inspectorPrincipal": "JIMMY MORAN",
+      "cliente": "PRODUCTOS EXTRAGEL Y UNIVERSAL S.A.C.",
       "descripcion": "MUESTREO DE ALIMENTOS",
       "sector": "ALIMENTOS",
       "fechaInspeccion": "2026-04-27",
@@ -17339,9 +17410,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "532",
-      "codigoProducto": "OT",
-      "productoNombre": "Otros",
-      "tipoInspeccion": "OT",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "6",
       "inspectores": [
         "JUNIOR NIMA"
@@ -17370,9 +17441,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "533",
-      "codigoProducto": "OT",
-      "productoNombre": "Otros",
-      "tipoInspeccion": "OT",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "119",
       "inspectores": [
         "JIMMY MORAN"
@@ -17409,7 +17480,7 @@
         "SAMUEL PALOMINO"
       ],
       "inspectorPrincipal": "SAMUEL PALOMINO",
-      "cliente": "BORAL S.A.C.",
+      "cliente": "BONALI S.A.",
       "descripcion": "MUESTREO ALIMENTOS",
       "sector": "ALIMENTOS",
       "fechaInspeccion": "2026-08-11",
@@ -17649,9 +17720,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "542",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "6",
       "inspectores": [
         "JUNIOR NIMA"
@@ -17680,9 +17751,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "543",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "119",
       "inspectores": [
         "JIMMY MORAN"
@@ -17711,9 +17782,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "544",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "119",
       "inspectores": [
         "JIMMY MORAN"
@@ -18033,9 +18104,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "554",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "114",
       "inspectores": [
         "OSCAR CARRASCO"
@@ -18064,9 +18135,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "555",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "114",
       "inspectores": [
         "OSCAR CARRASCO"
@@ -18095,9 +18166,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "556",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "114",
       "inspectores": [
         "OSCAR CARRASCO"
@@ -18126,9 +18197,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "557",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "114",
       "inspectores": [
         "OSCAR CARRASCO"
@@ -18157,9 +18228,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "558",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "103 / 06",
       "inspectores": [
         "EDGAR VELASQUEZ",
@@ -18189,9 +18260,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "559",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "119 / 104",
       "inspectores": [
         "JIMMY MORAN",
@@ -18221,9 +18292,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "560",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "119 / 104",
       "inspectores": [
         "JIMMY MORAN",
@@ -18253,9 +18324,9 @@
       "lugarCodigo": "01",
       "ubicacion": "LIMA",
       "nroInspeccion": "561",
-      "codigoProducto": "CO",
-      "productoNombre": "Conserva",
-      "tipoInspeccion": "CO",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
       "nroInspector": "103 / 06",
       "inspectores": [
         "EDGAR VELASQUEZ",
@@ -18266,6 +18337,133 @@
       "descripcion": "MUESTREO DE CONGELADO",
       "sector": "CONGELADO",
       "fechaInspeccion": "2026-08-20",
+      "observaciones": "ACREDITADO",
+      "acreditacion": "ACREDITADO",
+      "codigoDocumento": "",
+      "tieneGasto": false,
+      "gastoSolicitado": 0,
+      "gastoReal": 0,
+      "desviacion": 0,
+      "unidadNegocio": "",
+      "mesRequerido": "",
+      "depositadoA": "",
+      "desglose": null
+    },
+    {
+      "cotizacion": "2026-7289",
+      "nroActa": "26-562",
+      "anio": "26",
+      "lugarCodigo": "01",
+      "ubicacion": "LIMA",
+      "nroInspeccion": "562",
+      "codigoProducto": "AP",
+      "productoNombre": "Alimento / Agroalimento",
+      "tipoInspeccion": "AP",
+      "nroInspector": "120 /08",
+      "inspectores": [
+        "IVAN PIZARRO",
+        "SAMUEL PALOMINO"
+      ],
+      "inspectorPrincipal": "IVAN PIZARRO",
+      "cliente": "AGROVET MARKET S.A.",
+      "descripcion": "VERIFICACIÓN DE LOTE - ACEITE DE SALMON",
+      "sector": "ACEITE",
+      "fechaInspeccion": "2026-08-21",
+      "observaciones": "NO ACREDITADO",
+      "acreditacion": "NO ACREDITADO",
+      "codigoDocumento": "",
+      "tieneGasto": false,
+      "gastoSolicitado": 0,
+      "gastoReal": 0,
+      "desviacion": 0,
+      "unidadNegocio": "",
+      "mesRequerido": "",
+      "depositadoA": "",
+      "desglose": null
+    },
+    {
+      "cotizacion": "2016-7122",
+      "nroActa": "26-563",
+      "anio": "26",
+      "lugarCodigo": "01",
+      "ubicacion": "LIMA",
+      "nroInspeccion": "563",
+      "codigoProducto": "HD",
+      "productoNombre": "Hidrobiológico / Congelado",
+      "tipoInspeccion": "HD",
+      "nroInspector": "103",
+      "inspectores": [
+        "EDGAR VELASQUEZ"
+      ],
+      "inspectorPrincipal": "EDGAR VELASQUEZ",
+      "cliente": "FISHCO S.A.C.",
+      "descripcion": "MUESTREO DE CONGELADO",
+      "sector": "CONGELADO",
+      "fechaInspeccion": "2026-08-21",
+      "observaciones": "ACREDITADO",
+      "acreditacion": "ACREDITADO",
+      "codigoDocumento": "",
+      "tieneGasto": false,
+      "gastoSolicitado": 0,
+      "gastoReal": 0,
+      "desviacion": 0,
+      "unidadNegocio": "",
+      "mesRequerido": "",
+      "depositadoA": "",
+      "desglose": null
+    },
+    {
+      "cotizacion": "2026-7409",
+      "nroActa": "26-564",
+      "anio": "26",
+      "lugarCodigo": "43",
+      "ubicacion": "CHIMBOTE",
+      "nroInspeccion": "564",
+      "codigoProducto": "CO",
+      "productoNombre": "Conserva",
+      "tipoInspeccion": "CO",
+      "nroInspector": "05 / 06",
+      "inspectores": [
+        "ERNESTO SANDOVAL",
+        "JUNIOR NIMA"
+      ],
+      "inspectorPrincipal": "ERNESTO SANDOVAL",
+      "cliente": "INVERSIONES HATUN FISH S.R.L.",
+      "descripcion": "MUESTREO DE CONSERVA",
+      "sector": "CONSERVA",
+      "fechaInspeccion": "2026-08-24",
+      "observaciones": "ACREDITADO",
+      "acreditacion": "ACREDITADO",
+      "codigoDocumento": "",
+      "tieneGasto": false,
+      "gastoSolicitado": 0,
+      "gastoReal": 0,
+      "desviacion": 0,
+      "unidadNegocio": "",
+      "mesRequerido": "",
+      "depositadoA": "",
+      "desglose": null
+    },
+    {
+      "cotizacion": "2026-7409",
+      "nroActa": "26-565",
+      "anio": "26",
+      "lugarCodigo": "43",
+      "ubicacion": "CHIMBOTE",
+      "nroInspeccion": "565",
+      "codigoProducto": "CO",
+      "productoNombre": "Conserva",
+      "tipoInspeccion": "CO",
+      "nroInspector": "05 / 06",
+      "inspectores": [
+        "ERNESTO SANDOVAL",
+        "JUNIOR NIMA"
+      ],
+      "inspectorPrincipal": "ERNESTO SANDOVAL",
+      "cliente": "INVERSIONES HATUN FISH S.R.L.",
+      "descripcion": "MUESTREO DE CONSERVA",
+      "sector": "CONSERVA",
+      "fechaInspeccion": "2026-08-24",
       "observaciones": "ACREDITADO",
       "acreditacion": "ACREDITADO",
       "codigoDocumento": "",
@@ -18357,7 +18555,7 @@
     },
     {
       "go": "028",
-      "cotizacion": "2026-0492\r\n2026-0494",
+      "cotizacion": "2026-0492\n2026-0494",
       "cliente": "BMV DEL MAR S.A.C.",
       "provincia": "LIMA",
       "mesRequerido": "ENERO",
@@ -18377,7 +18575,7 @@
     },
     {
       "go": "044",
-      "cotizacion": "2026-1110\r\n2026-1109",
+      "cotizacion": "2026-1110\n2026-1109",
       "cliente": "FUXION BIOTECH S.A.C.",
       "provincia": "LURIN",
       "mesRequerido": "FEBRERO",
@@ -18387,7 +18585,7 @@
     },
     {
       "go": "049",
-      "cotizacion": "2026-0551\r\n2025-11663",
+      "cotizacion": "2026-0551\n2025-11663",
       "cliente": "AGROPESCA DEL PERU S.A.C. SPRING VALLEY FRUIT S.A.C",
       "provincia": "PAITA",
       "mesRequerido": "FEBRERO",
@@ -18397,7 +18595,7 @@
     },
     {
       "go": "055",
-      "cotizacion": "2026-1217\r\n2026-1220",
+      "cotizacion": "2026-1217\n2026-1220",
       "cliente": "AMAZONIC FOODS SOCIEDAD ANONIMA CERRADA",
       "provincia": "LIMA",
       "mesRequerido": "FEBRERO",
@@ -18417,7 +18615,7 @@
     },
     {
       "go": "072",
-      "cotizacion": "2026-1620\r\n2026-1619\r\n2026-1621",
+      "cotizacion": "2026-1620\n2026-1619\n2026-1621",
       "cliente": "SPRING VALLEY FRUIT S.A.C",
       "provincia": "CALLAO",
       "mesRequerido": "FEBRERO",
@@ -18427,7 +18625,7 @@
     },
     {
       "go": "078",
-      "cotizacion": "2026-2024\r\n2026-2035",
+      "cotizacion": "2026-2024\n2026-2035",
       "cliente": "FRIGORIFICOS DE LOS ANDES S.A.C.",
       "provincia": "CUZCO",
       "mesRequerido": "FEBRERO",
@@ -18437,7 +18635,7 @@
     },
     {
       "go": "080",
-      "cotizacion": "2026-1974\r\n2026-2145",
+      "cotizacion": "2026-1974\n2026-2145",
       "cliente": "FENIZIAM PERU S.A.C. BIG FISH EIR",
       "provincia": "LIMA",
       "mesRequerido": "MARZO",
@@ -18467,7 +18665,7 @@
     },
     {
       "go": "087",
-      "cotizacion": "2026-1892\r\n2026-1904",
+      "cotizacion": "2026-1892\n2026-1904",
       "cliente": "GROUP CORPORATION REYE'S S.A.C INVERSIONES GENERALES DEL MAR S.A.C",
       "provincia": "CHIMBOTE",
       "mesRequerido": "MARZO",
@@ -18537,7 +18735,7 @@
     },
     {
       "go": "122",
-      "cotizacion": "2026-4070\r\n2026-4077",
+      "cotizacion": "2026-4070\n2026-4077",
       "cliente": "AMAZONIC FOODS SOCIEDAD ANONIMA CERRADA",
       "provincia": "",
       "mesRequerido": "MAYO",
@@ -18567,7 +18765,7 @@
     },
     {
       "go": "148",
-      "cotizacion": "2026-4282\r\n2026-5369",
+      "cotizacion": "2026-4282\n2026-5369",
       "cliente": "SPRING VALLEY FRUIT S.A.C NUTRIFISH TRADING S.A.C",
       "provincia": "SULLANA",
       "mesRequerido": "JUNIO",
@@ -18577,7 +18775,7 @@
     },
     {
       "go": "153",
-      "cotizacion": "2026-5973\r\n2026-5999",
+      "cotizacion": "2026-5973\n2026-5999",
       "cliente": "SURTIFOODS PERU S.A.C",
       "provincia": "CHIMBOTE",
       "mesRequerido": "JUNIO",
@@ -18596,5 +18794,5 @@
       "depositadoA": "GABRIELA JARA"
     }
   ],
-  "timestamp": "2026-08-20T22:32:55.378Z"
+  "timestamp": "2026-08-21T18:31:03.943Z"
 }

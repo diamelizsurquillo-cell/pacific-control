@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Connect to API and start live data stream
   Api.onStatus(handleApiStatus);
   Api.onData(handleApiData);
+  Api.connectSSE();
 
   // Initial load
   Api.fetchDashboard(false).catch(err => {
