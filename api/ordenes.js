@@ -7,6 +7,7 @@ const {
   parseCodigoProducto,
   hasLocalExcelFiles,
   getLocalExcelMTime,
+  DEFAULT_SHEET_ID_ORDENES,
 } = require('../lib/google-sheets');
 const cache = require('../lib/cache');
 const {
@@ -46,7 +47,7 @@ module.exports = async function handler(req, res) {
     }
 
     const hasLocal = hasLocalExcelFiles();
-    const sheetId = process.env.SHEET_ID_ORDENES;
+    const sheetId = process.env.SHEET_ID_ORDENES || DEFAULT_SHEET_ID_ORDENES;
     if (!hasLocal && !sheetId) {
       return res.status(500).json({ error: 'SHEET_ID_ORDENES not configured and no local Excel found' });
     }

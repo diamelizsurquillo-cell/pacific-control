@@ -1,4 +1,4 @@
-const { readRange, parseGastos, hasLocalExcelFiles, getLocalExcelMTime } = require('../lib/google-sheets');
+const { readRange, parseGastos, hasLocalExcelFiles, getLocalExcelMTime, DEFAULT_SHEET_ID_GASTOS } = require('../lib/google-sheets');
 const cache = require('../lib/cache');
 
 const CACHE_KEY = 'gastos_data';
@@ -29,7 +29,7 @@ module.exports = async function handler(req, res) {
     }
 
     const hasLocal = hasLocalExcelFiles();
-    const sheetId = process.env.SHEET_ID_GASTOS;
+    const sheetId = process.env.SHEET_ID_GASTOS || DEFAULT_SHEET_ID_GASTOS;
     if (!hasLocal && !sheetId) {
       return res.status(500).json({ error: 'SHEET_ID_GASTOS not configured and no local Excel found' });
     }

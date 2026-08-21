@@ -15,6 +15,8 @@ const {
   isValidCliente,
   hasLocalExcelFiles,
   getLocalExcelMTime,
+  DEFAULT_SHEET_ID_ORDENES,
+  DEFAULT_SHEET_ID_GASTOS,
 } = require('../../lib/google-sheets');
 const cache = require('../../lib/cache');
 const {
@@ -67,8 +69,8 @@ exports.handler = async function(event, context) {
     }
 
     const hasLocal = hasLocalExcelFiles();
-    const sheetIdOrdenes = process.env.SHEET_ID_ORDENES;
-    const sheetIdGastos = process.env.SHEET_ID_GASTOS;
+    const sheetIdOrdenes = process.env.SHEET_ID_ORDENES || DEFAULT_SHEET_ID_ORDENES;
+    const sheetIdGastos = process.env.SHEET_ID_GASTOS || DEFAULT_SHEET_ID_GASTOS;
 
     if (!hasLocal && (!sheetIdOrdenes || !sheetIdGastos)) {
       return {

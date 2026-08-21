@@ -3,7 +3,7 @@
  * GET /.netlify/functions/gastos (redirected from /api/gastos)
  */
 
-const { readRange, parseGastos } = require('../../lib/google-sheets');
+const { readRange, parseGastos, DEFAULT_SHEET_ID_GASTOS } = require('../../lib/google-sheets');
 const cache = require('../../lib/cache');
 
 const CACHE_KEY = 'gastos_data';
@@ -41,14 +41,7 @@ exports.handler = async function(event, context) {
       }
     }
 
-    const sheetId = process.env.SHEET_ID_GASTOS;
-    if (!sheetId) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: 'SHEET_ID_GASTOS not configured' }),
-      };
-    }
+    const sheetId = process.env.SHEET_ID_GASTOS || DEFAULT_SHEET_ID_GASTOS;
 
     const rows = await readRange(sheetId, "'Gastos Operativos GO 2026'!A1:Q700");
     const gastos = parseGastos(rows);

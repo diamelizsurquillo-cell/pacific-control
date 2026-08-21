@@ -10,6 +10,7 @@ const {
   parseIdLugar,
   parseIdInspector,
   parseCodigoProducto,
+  DEFAULT_SHEET_ID_ORDENES,
 } = require('../../lib/google-sheets');
 const cache = require('../../lib/cache');
 const {
@@ -56,14 +57,7 @@ exports.handler = async function(event, context) {
       }
     }
 
-    const sheetId = process.env.SHEET_ID_ORDENES;
-    if (!sheetId) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: 'SHEET_ID_ORDENES not configured' }),
-      };
-    }
+    const sheetId = process.env.SHEET_ID_ORDENES || DEFAULT_SHEET_ID_ORDENES;
 
     const ranges = [
       'SERVICIOS!A3:W2000',

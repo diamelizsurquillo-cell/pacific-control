@@ -9,6 +9,8 @@ const {
   parseIdInspector,
   parseCodigoProducto,
   isValidCliente,
+  DEFAULT_SHEET_ID_ORDENES,
+  DEFAULT_SHEET_ID_GASTOS,
 } = require('./lib/google-sheets');
 const {
   MAPA_LUGAR,
@@ -43,8 +45,8 @@ if (fs.existsSync(envPath)) {
 }
 
 async function generateData() {
-  const sheetIdOrdenes = process.env.SHEET_ID_ORDENES;
-  const sheetIdGastos = process.env.SHEET_ID_GASTOS;
+  const sheetIdOrdenes = process.env.SHEET_ID_ORDENES || DEFAULT_SHEET_ID_ORDENES;
+  const sheetIdGastos = process.env.SHEET_ID_GASTOS || DEFAULT_SHEET_ID_GASTOS;
 
   const ordenesRanges = [
     'SERVICIOS!A3:W2000',
