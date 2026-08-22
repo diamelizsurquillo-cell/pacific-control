@@ -55,7 +55,7 @@ const DashboardCharts = (function() {
     const ctx = document.getElementById('chartMensual');
     if (!ctx) return;
 
-    const labels = Object.keys(agrupacionMes || {});
+    const labels = Object.keys(agrupacionMes || {}).filter(m => m !== 'SIN MES');
     const counts = labels.map(m => agrupacionMes[m].count || 0);
     const gastosReales = labels.map(m => Math.round(agrupacionMes[m].gastoReal || 0));
 

@@ -333,8 +333,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const porUbicacion = {};
 
     list.forEach(s => {
-      // Mes
-      const mes = s.mesRequerido || 'SIN MES';
+      // Mes — fallback: derive from fechaInspeccion if mesRequerido is empty
+      let mes = s.mesRequerido;
+      if (!mes && s.fechaInspeccion) {
+        const mIdx = parseInt(s.fechaInspeccion.split('-')[1], 10) - 1;
+        const nombres = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+        if (mIdx >= 0 && mIdx <= 11) mes = nombres[mIdx];
+      }
+      if (!mes) mes = 'SIN MES';
       if (!porMes[mes]) porMes[mes] = { count: 0, gastoReal: 0 };
       porMes[mes].count++;
       porMes[mes].gastoReal += s.gastoReal;

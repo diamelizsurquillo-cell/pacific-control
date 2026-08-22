@@ -21,6 +21,7 @@ const {
   extraerSector,
   resolverInspectores,
   resolverLugar,
+  mesDesdeISO,
 } = require('./lib/data-maps');
 
 // Load environment variables from .env.local if exists
@@ -119,7 +120,7 @@ async function generateData() {
       gastoReal,
       desviacion: gastoSolicitado > 0 ? Math.round(((gastoReal - gastoSolicitado) / gastoSolicitado) * 10000) / 100 : 0,
       unidadNegocio: gastosAsociados.length > 0 ? gastosAsociados[0].unidadNegocio : '',
-      mesRequerido: gastosAsociados.length > 0 ? gastosAsociados[0].mesRequerido : '',
+      mesRequerido: gastosAsociados.length > 0 ? gastosAsociados[0].mesRequerido : mesDesdeISO(o.fechaInspeccion),
       depositadoA: gastosAsociados.length > 0 ? gastosAsociados[0].depositadoA : '',
       desglose: gastosAsociados.length > 0 ? {
         pasajes: gastosAsociados.reduce((s, g) => s + g.pasajes, 0),

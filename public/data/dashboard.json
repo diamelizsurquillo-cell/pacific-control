@@ -5,8 +5,8 @@
     "gastoTotalReal": 92603.25,
     "gastoTotalSolicitado": 100245.7,
     "gastoPromedio": 174.39,
-    "serviciosConGasto": 203,
-    "serviciosSinGasto": 328,
+    "serviciosConGasto": 205,
+    "serviciosSinGasto": 326,
     "serviciosAcreditados": 325,
     "serviciosNoAcreditados": 188,
     "porcentajeAcreditados": 61.2,
@@ -84,47 +84,47 @@
     },
     "porMes": {
       "ENERO": {
-        "count": 46,
+        "count": 76,
         "gastoReal": 12952.83,
         "gastoSolicitado": 12738.8
       },
       "FEBRERO": {
-        "count": 48,
+        "count": 96,
         "gastoReal": 18448.47,
         "gastoSolicitado": 20900.5
       },
       "MARZO": {
-        "count": 14,
+        "count": 63,
         "gastoReal": 4749.43,
         "gastoSolicitado": 4998
       },
       "ABRIL": {
-        "count": 20,
+        "count": 50,
         "gastoReal": 6297.3,
         "gastoSolicitado": 6966
       },
       "MAYO": {
-        "count": 16,
+        "count": 58,
         "gastoReal": 5726.470000000001,
         "gastoSolicitado": 6184.4
       },
       "JUNIO": {
-        "count": 34,
+        "count": 67,
         "gastoReal": 8578.25,
         "gastoSolicitado": 8943
       },
       "JULIO": {
-        "count": 12,
+        "count": 47,
         "gastoReal": 7038.1900000000005,
         "gastoSolicitado": 8440
       },
       "AGOSTO": {
-        "count": 13,
+        "count": 72,
         "gastoReal": 3617.2000000000003,
         "gastoSolicitado": 4670
       },
       "SIN MES": {
-        "count": 328,
+        "count": 2,
         "gastoReal": 0,
         "gastoSolicitado": 0
       }
@@ -137,8 +137,8 @@
       },
       "MADRE DE DIOS": {
         "count": 4,
-        "gastoReal": 335,
-        "gastoSolicitado": 350
+        "gastoReal": 535,
+        "gastoSolicitado": 550
       },
       "TACNA": {
         "count": 45,
@@ -152,8 +152,8 @@
       },
       "CHIMBOTE": {
         "count": 59,
-        "gastoReal": 40463.4,
-        "gastoSolicitado": 43726.4
+        "gastoReal": 40697.4,
+        "gastoSolicitado": 44026.4
       },
       "ANCASH": {
         "count": 1,
@@ -167,8 +167,8 @@
       },
       "DESCONOCIDO": {
         "count": 3,
-        "gastoReal": 1148.8899999999999,
-        "gastoSolicitado": 1400
+        "gastoReal": 0,
+        "gastoSolicitado": 0
       },
       "CUSCO": {
         "count": 6,
@@ -205,6 +205,11 @@
         "gastoReal": 150,
         "gastoSolicitado": 150
       },
+      "PAITA": {
+        "count": 0,
+        "gastoReal": 898.89,
+        "gastoSolicitado": 1084
+      },
       "PIURA": {
         "count": 0,
         "gastoReal": 410.2,
@@ -214,11 +219,6 @@
         "count": 0,
         "gastoReal": 140,
         "gastoSolicitado": 140
-      },
-      "PAITA": {
-        "count": 0,
-        "gastoReal": 184,
-        "gastoSolicitado": 184
       },
       "CUZCO": {
         "count": 0,
@@ -304,7 +304,7 @@
     },
     "porUnidadNegocio": {
       "PESCA": {
-        "count": 160,
+        "count": 161,
         "gastoReal": 50066.01000000001
       },
       "CERTIFICACIONES": {
@@ -335,8 +335,8 @@
     {
       "nombre": "MADRE DE DIOS",
       "count": 4,
-      "gastoReal": 335,
-      "gastoSolicitado": 350,
+      "gastoReal": 535,
+      "gastoSolicitado": 550,
       "coords": {
         "lat": -12.5933,
         "lng": -69.1891
@@ -362,8 +362,8 @@
     {
       "nombre": "CHIMBOTE",
       "count": 59,
-      "gastoReal": 40463.4,
-      "gastoSolicitado": 43726.4,
+      "gastoReal": 40697.4,
+      "gastoSolicitado": 44026.4,
       "coords": {
         "lat": -9.0746,
         "lng": -78.5936
@@ -386,8 +386,8 @@
     {
       "nombre": "DESCONOCIDO",
       "count": 3,
-      "gastoReal": 1148.8899999999999,
-      "gastoSolicitado": 1400,
+      "gastoReal": 0,
+      "gastoSolicitado": 0,
       "coords": null
     },
     {
@@ -452,6 +452,16 @@
       }
     },
     {
+      "nombre": "PAITA",
+      "count": 0,
+      "gastoReal": 898.89,
+      "gastoSolicitado": 1084,
+      "coords": {
+        "lat": -5.0892,
+        "lng": -81.1145
+      }
+    },
+    {
       "nombre": "PIURA",
       "count": 0,
       "gastoReal": 410.2,
@@ -467,16 +477,6 @@
       "gastoReal": 140,
       "gastoSolicitado": 140,
       "coords": null
-    },
-    {
-      "nombre": "PAITA",
-      "count": 0,
-      "gastoReal": 184,
-      "gastoSolicitado": 184,
-      "coords": {
-        "lat": -5.0892,
-        "lng": -81.1145
-      }
     },
     {
       "nombre": "CUZCO",
@@ -804,7 +804,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -835,7 +835,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -866,7 +866,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -934,7 +934,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1002,7 +1002,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1404,7 +1404,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1583,7 +1583,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1614,7 +1614,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1682,7 +1682,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1825,7 +1825,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -1930,7 +1930,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2072,7 +2072,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2142,7 +2142,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2210,7 +2210,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2279,7 +2279,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2311,7 +2311,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2343,7 +2343,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2375,7 +2375,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2631,7 +2631,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2662,7 +2662,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2694,7 +2694,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2726,7 +2726,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2831,7 +2831,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2863,7 +2863,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2894,7 +2894,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2964,7 +2964,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -2995,7 +2995,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3026,7 +3026,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3057,7 +3057,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3088,7 +3088,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ENERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3120,7 +3120,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3152,7 +3152,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3258,7 +3258,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3289,7 +3289,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3395,7 +3395,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3464,7 +3464,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3495,7 +3495,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3526,7 +3526,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3557,7 +3557,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3699,7 +3699,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3804,7 +3804,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3872,7 +3872,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3940,7 +3940,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -3971,7 +3971,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4002,7 +4002,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4070,7 +4070,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4101,7 +4101,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4169,7 +4169,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4237,7 +4237,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4306,7 +4306,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4338,7 +4338,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4480,7 +4480,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4659,7 +4659,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4690,7 +4690,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4721,7 +4721,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4752,7 +4752,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4820,7 +4820,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4851,7 +4851,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -4993,7 +4993,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5024,7 +5024,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5092,7 +5092,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5123,7 +5123,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5154,7 +5154,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5185,7 +5185,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5255,7 +5255,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5324,7 +5324,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5540,7 +5540,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5571,7 +5571,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5641,7 +5641,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5672,7 +5672,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5778,7 +5778,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5846,7 +5846,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5951,7 +5951,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -5982,7 +5982,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6051,7 +6051,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6082,7 +6082,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6113,7 +6113,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6144,7 +6144,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "FEBRERO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6287,7 +6287,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6392,7 +6392,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6423,7 +6423,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6454,7 +6454,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6486,7 +6486,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6518,7 +6518,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6623,7 +6623,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6691,7 +6691,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6759,7 +6759,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6790,7 +6790,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6895,7 +6895,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6926,7 +6926,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -6994,7 +6994,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7025,7 +7025,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7056,7 +7056,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7087,7 +7087,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7118,7 +7118,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7149,7 +7149,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7180,7 +7180,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7212,7 +7212,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7281,7 +7281,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7313,7 +7313,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7383,7 +7383,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7415,7 +7415,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7446,7 +7446,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7477,7 +7477,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7508,7 +7508,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7539,7 +7539,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7570,7 +7570,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7602,7 +7602,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7634,7 +7634,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7666,7 +7666,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7734,7 +7734,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7803,7 +7803,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7835,7 +7835,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7867,7 +7867,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -7973,7 +7973,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8041,7 +8041,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8109,7 +8109,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8140,7 +8140,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8171,7 +8171,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -8202,7 +8202,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8233,7 +8233,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8339,7 +8339,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8371,7 +8371,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8403,7 +8403,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8435,7 +8435,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8466,7 +8466,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8534,7 +8534,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8565,7 +8565,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MARZO",
       "depositadoA": "",
       "desglose": null
     },
@@ -8633,7 +8633,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -8738,7 +8738,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -8769,7 +8769,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -8913,7 +8913,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9018,7 +9018,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9087,7 +9087,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9194,7 +9194,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9299,7 +9299,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9358,7 +9358,7 @@
       "cliente": "DALIKA PERU S.A.C.",
       "descripcion": "MUESTREO DE HARINA",
       "sector": "HARINA",
-      "fechaInspeccion": null,
+      "fechaInspeccion": "2026-04-21",
       "observaciones": "ACREDITADO",
       "acreditacion": "ACREDITADO",
       "codigoDocumento": "",
@@ -9395,7 +9395,7 @@
       "cliente": "DALIKA PERU S.A.C.",
       "descripcion": "MUESTREO DE HARINA",
       "sector": "HARINA",
-      "fechaInspeccion": null,
+      "fechaInspeccion": "2026-04-21",
       "observaciones": "NO ACREDITADO",
       "acreditacion": "NO ACREDITADO",
       "codigoDocumento": "",
@@ -9479,7 +9479,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9510,7 +9510,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9541,7 +9541,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9572,7 +9572,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9603,7 +9603,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9634,7 +9634,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9665,7 +9665,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9696,7 +9696,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9727,7 +9727,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9796,7 +9796,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9828,7 +9828,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9860,7 +9860,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9892,7 +9892,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9924,7 +9924,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -9955,7 +9955,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10173,7 +10173,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10204,7 +10204,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10235,7 +10235,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10266,7 +10266,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10297,7 +10297,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10328,7 +10328,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10359,7 +10359,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "ABRIL",
       "depositadoA": "",
       "desglose": null
     },
@@ -10390,7 +10390,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10421,7 +10421,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10452,7 +10452,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10483,7 +10483,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10514,7 +10514,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10545,7 +10545,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10613,7 +10613,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10644,7 +10644,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10786,7 +10786,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10817,7 +10817,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10848,7 +10848,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10879,7 +10879,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -10910,7 +10910,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11015,7 +11015,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11046,7 +11046,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11077,7 +11077,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11108,7 +11108,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11178,7 +11178,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11283,7 +11283,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11314,7 +11314,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11345,7 +11345,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11376,7 +11376,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11559,7 +11559,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11665,7 +11665,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11697,7 +11697,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11729,7 +11729,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11834,7 +11834,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11902,7 +11902,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -11933,7 +11933,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12001,7 +12001,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12106,7 +12106,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12137,7 +12137,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12169,7 +12169,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12200,7 +12200,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12231,7 +12231,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12262,7 +12262,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12293,7 +12293,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12324,7 +12324,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12355,7 +12355,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12386,7 +12386,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12417,7 +12417,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12448,7 +12448,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "MAYO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12480,7 +12480,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12511,7 +12511,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12581,7 +12581,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12612,7 +12612,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12791,7 +12791,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12822,7 +12822,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12890,7 +12890,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12921,7 +12921,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12952,7 +12952,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -12983,7 +12983,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13014,7 +13014,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13045,7 +13045,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13225,7 +13225,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13256,7 +13256,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13287,7 +13287,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13318,7 +13318,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13349,7 +13349,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13517,7 +13517,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13587,7 +13587,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13619,7 +13619,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13650,7 +13650,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13682,7 +13682,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13713,7 +13713,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13781,7 +13781,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13812,7 +13812,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13843,7 +13843,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13948,7 +13948,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -13979,7 +13979,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14010,7 +14010,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14080,7 +14080,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14112,7 +14112,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14180,7 +14180,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JUNIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14287,7 +14287,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14319,7 +14319,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14389,7 +14389,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14421,7 +14421,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14453,7 +14453,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14484,7 +14484,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14515,7 +14515,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14546,7 +14546,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14577,7 +14577,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14684,7 +14684,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14753,7 +14753,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14784,7 +14784,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14815,7 +14815,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14846,7 +14846,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14952,7 +14952,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -14983,7 +14983,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15015,7 +15015,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15047,7 +15047,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15079,7 +15079,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15110,7 +15110,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15217,7 +15217,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15249,7 +15249,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15280,7 +15280,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15311,7 +15311,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15342,7 +15342,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15373,7 +15373,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15555,7 +15555,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15586,7 +15586,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15617,7 +15617,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15648,7 +15648,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15679,7 +15679,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15710,7 +15710,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15817,7 +15817,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15924,7 +15924,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15955,7 +15955,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -15986,7 +15986,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "JULIO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16018,7 +16018,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16088,7 +16088,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16156,7 +16156,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16187,7 +16187,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16218,7 +16218,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16250,7 +16250,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16281,7 +16281,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16312,7 +16312,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16343,7 +16343,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16374,7 +16374,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16406,7 +16406,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16437,7 +16437,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16505,7 +16505,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16536,7 +16536,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16569,7 +16569,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16751,7 +16751,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16782,7 +16782,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16926,7 +16926,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16957,7 +16957,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -16988,7 +16988,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17020,7 +17020,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17051,7 +17051,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17157,7 +17157,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17189,7 +17189,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17294,7 +17294,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17325,7 +17325,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17430,7 +17430,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17461,7 +17461,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17492,7 +17492,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17523,7 +17523,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17554,7 +17554,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17585,7 +17585,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17616,7 +17616,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17647,7 +17647,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17678,7 +17678,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17709,7 +17709,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17740,7 +17740,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17771,7 +17771,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17802,7 +17802,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17833,7 +17833,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17864,7 +17864,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17895,7 +17895,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17926,7 +17926,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17957,7 +17957,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -17988,7 +17988,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18093,7 +18093,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18124,7 +18124,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18155,7 +18155,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18186,7 +18186,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18217,7 +18217,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18249,7 +18249,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18281,7 +18281,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18313,7 +18313,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18345,7 +18345,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18377,7 +18377,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18408,7 +18408,7 @@
       "gastoReal": 0,
       "desviacion": 0,
       "unidadNegocio": "",
-      "mesRequerido": "",
+      "mesRequerido": "AGOSTO",
       "depositadoA": "",
       "desglose": null
     },
@@ -18435,14 +18435,20 @@
       "observaciones": "ACREDITADO",
       "acreditacion": "ACREDITADO",
       "codigoDocumento": "",
-      "tieneGasto": false,
+      "tieneGasto": true,
       "gastoSolicitado": 0,
       "gastoReal": 0,
       "desviacion": 0,
-      "unidadNegocio": "",
-      "mesRequerido": "",
-      "depositadoA": "",
-      "desglose": null
+      "unidadNegocio": "PESCA",
+      "mesRequerido": "AGOSTO",
+      "depositadoA": "OSCAR CARRASCO",
+      "desglose": {
+        "pasajes": 0,
+        "movilidad": 0,
+        "envioMateriales": 0,
+        "viaticos": 0,
+        "otros": 0
+      }
     },
     {
       "cotizacion": "2026-7409",
@@ -18467,14 +18473,20 @@
       "observaciones": "ACREDITADO",
       "acreditacion": "ACREDITADO",
       "codigoDocumento": "",
-      "tieneGasto": false,
+      "tieneGasto": true,
       "gastoSolicitado": 0,
       "gastoReal": 0,
       "desviacion": 0,
-      "unidadNegocio": "",
-      "mesRequerido": "",
-      "depositadoA": "",
-      "desglose": null
+      "unidadNegocio": "PESCA",
+      "mesRequerido": "AGOSTO",
+      "depositadoA": "OSCAR CARRASCO",
+      "desglose": {
+        "pasajes": 0,
+        "movilidad": 0,
+        "envioMateriales": 0,
+        "viaticos": 0,
+        "otros": 0
+      }
     }
   ],
   "catalogos": {
@@ -18517,7 +18529,7 @@
       "go": "009",
       "cotizacion": "2026-0317",
       "cliente": "FOMENTO DE PESCA ARTESANAL DEL PERU S.A.C.",
-      "provincia": "",
+      "provincia": "PAITA",
       "mesRequerido": "ENERO",
       "goTotalSolicitado": 300,
       "goReal": 195,
@@ -18527,7 +18539,7 @@
       "go": "010",
       "cotizacion": "2026-0310",
       "cliente": "SURTIFOODS PERU S.A.C.",
-      "provincia": "",
+      "provincia": "CHIMBOTE",
       "mesRequerido": "ENERO",
       "goTotalSolicitado": 300,
       "goReal": 234,
@@ -18537,7 +18549,7 @@
       "go": "011",
       "cotizacion": "2026-0153",
       "cliente": "FIMORS S.R.L",
-      "provincia": "",
+      "provincia": "PAITA",
       "mesRequerido": "ENERO",
       "goTotalSolicitado": 300,
       "goReal": 246,
@@ -18607,7 +18619,7 @@
       "go": "066",
       "cotizacion": "2026-1784",
       "cliente": "INDUSTRIAL PESQUERA SANTA MONICA S.A.",
-      "provincia": "",
+      "provincia": "PAITA",
       "mesRequerido": "FEBRERO",
       "goTotalSolicitado": 300,
       "goReal": 273.89,
@@ -18737,7 +18749,7 @@
       "go": "122",
       "cotizacion": "2026-4070\n2026-4077",
       "cliente": "AMAZONIC FOODS SOCIEDAD ANONIMA CERRADA",
-      "provincia": "",
+      "provincia": "MADRE DE DIOS",
       "mesRequerido": "MAYO",
       "goTotalSolicitado": 200,
       "goReal": 200,
@@ -18794,5 +18806,5 @@
       "depositadoA": "GABRIELA JARA"
     }
   ],
-  "timestamp": "2026-08-21T18:41:20.778Z"
+  "timestamp": "2026-08-22T00:03:42.363Z"
 }

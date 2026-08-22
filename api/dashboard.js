@@ -31,6 +31,7 @@ const {
   extraerSector,
   resolverInspectores,
   resolverLugar,
+  mesDesdeISO,
 } = require('../lib/data-maps');
 
 const CACHE_KEY = 'dashboard_combined';
@@ -156,7 +157,7 @@ module.exports = async function handler(req, res) {
           ? Math.round(((gastoReal - gastoSolicitado) / gastoSolicitado) * 10000) / 100
           : 0,
         unidadNegocio: gastosAsociados.length > 0 ? gastosAsociados[0].unidadNegocio : '',
-        mesRequerido: gastosAsociados.length > 0 ? gastosAsociados[0].mesRequerido : '',
+        mesRequerido: gastosAsociados.length > 0 ? gastosAsociados[0].mesRequerido : mesDesdeISO(o.fechaInspeccion),
         depositadoA: gastosAsociados.length > 0 ? gastosAsociados[0].depositadoA : '',
         desglose: gastosAsociados.length > 0 ? {
           pasajes: gastosAsociados.reduce((s, g) => s + g.pasajes, 0),
