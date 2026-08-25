@@ -53,10 +53,6 @@
       }
     },
     "porAcreditacion": {
-      "46219": {
-        "count": 1,
-        "gastoReal": 287.25
-      },
       "ACREDITADO": {
         "count": 325,
         "gastoReal": 43320.68
@@ -80,6 +76,10 @@
       "AMPLIACIÓN": {
         "count": 2,
         "gastoReal": 0
+      },
+      "NO ESPECIFICADO": {
+        "count": 1,
+        "gastoReal": 287.25
       }
     },
     "porMes": {
@@ -536,11 +536,11 @@
       "QUÍMICO"
     ],
     "acreditaciones": [
-      "46219",
       "ACREDITADO",
       "AMPLIACIÓN",
       "CANCELADO",
       "NO ACREDITADO",
+      "NO ESPECIFICADO",
       "REPROGRAMADO",
       "TESTIFICACIÓN"
     ],
@@ -14907,7 +14907,7 @@
       "sector": "HARINA",
       "fechaInspeccion": "2026-07-16",
       "observaciones": "46219",
-      "acreditacion": "46219",
+      "acreditacion": "NO ESPECIFICADO",
       "codigoDocumento": "",
       "tieneGasto": true,
       "gastoSolicitado": 290,
@@ -18806,5 +18806,5 @@
       "depositadoA": "GABRIELA JARA"
     }
   ],
-  "timestamp": "2026-08-22T00:03:42.363Z"
+  "timestamp": "2026-08-25T15:21:29.792Z"
 }
