@@ -15,6 +15,7 @@ const {
   isValidCliente,
   hasLocalExcelFiles,
   getLocalExcelMTime,
+  clearWorkbookCache,
   DEFAULT_SHEET_ID_ORDENES,
   DEFAULT_SHEET_ID_GASTOS,
 } = require('../../lib/google-sheets');
@@ -50,6 +51,10 @@ exports.handler = async function(event, context) {
   try {
     const params = event.queryStringParameters || {};
     const forceRefresh = params.refresh === 'true';
+    if (forceRefresh) {
+      clearWorkbookCache();
+    }
+
     const excelMTime = getLocalExcelMTime();
     const cacheCreatedAt = cache.getCreatedAt(CACHE_KEY);
     const isExcelUpdated = excelMTime > 0 && excelMTime > cacheCreatedAt;
@@ -90,11 +95,11 @@ exports.handler = async function(event, context) {
     ];
 
     const [ordenesDataBatch, gastosRows] = await Promise.all([
-      readMultipleRanges(sheetIdOrdenes, ordenesRanges).catch(async () => {
-        const rows = await readRange(sheetIdOrdenes, 'SERVICIOS!A3:W2000');
+      readMultipleRanges(sheetIdOrdenes, ordenesRanges, forceRefresh).catch(async () => {
+        const rows = await readRange(sheetIdOrdenes, 'SERVICIOS!A3:W2000', forceRefresh);
         return { 'SERVICIOS!A3:W2000': rows };
       }),
-      readRange(sheetIdGastos, "'Gastos Operativos GO 2026'!A1:Q700").catch(() => []),
+      readRange(sheetIdGastos, "'Gastos Operativos GO 2026'!A1:Q700", forceRefresh).catch(() => []),
     ]);
 
     // Parse dynamic catalogs from the Sheet
@@ -155,6 +160,7 @@ exports.handler = async function(event, context) {
         sector: extraerSector(o.descripcion),
         fechaInspeccion: o.fechaInspeccion,
         observaciones: o.observaciones,
+        acreditacion: o.acreditacion || 'NO ESPECIFICADO',
         codigoDocumento: o.codigoDocumento,
         tieneGasto: gastosAsociados.length > 0,
         gastoSolicitado,
