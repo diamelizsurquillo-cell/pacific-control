@@ -485,12 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${escapeHtml(s.fechaInspeccion || '-')}
           </td>
           <td>
-            <div style="font-weight: 500; max-width: 220px; word-break: break-word;">${escapeHtml(s.cliente || 'Sin Cliente')}</div>
-          </td>
-          <td>
-            <div style="max-width: 320px; font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.4; word-break: break-word;">
-              ${escapeHtml(s.descripcion || 'Sin descripción')}
-            </div>
+            <div style="font-weight: 500; max-width: 240px; word-break: break-word;">${escapeHtml(s.cliente || 'Sin Cliente')}</div>
           </td>
           <td>
             <div style="font-weight: 500; color: var(--primary-300);">${escapeHtml(inspectoresText)}</div>
