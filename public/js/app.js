@@ -24,6 +24,24 @@ document.addEventListener('DOMContentLoaded', () => {
     lastUpdated: null,
   };
 
+  function normalizarMes(mes) {
+    if (!mes || typeof mes !== 'string') return '';
+    const m = mes.trim().toUpperCase();
+    if (m === 'SEPTIEMBRE' || m === 'SETIEMBRE' || m === 'SET' || m === 'SEP') return 'SETIEMBRE';
+    if (m.startsWith('ENE')) return 'ENERO';
+    if (m.startsWith('FEB')) return 'FEBRERO';
+    if (m.startsWith('MAR')) return 'MARZO';
+    if (m.startsWith('ABR')) return 'ABRIL';
+    if (m.startsWith('MAY')) return 'MAYO';
+    if (m.startsWith('JUN')) return 'JUNIO';
+    if (m.startsWith('JUL')) return 'JULIO';
+    if (m.startsWith('AGO')) return 'AGOSTO';
+    if (m.startsWith('OCT')) return 'OCTUBRE';
+    if (m.startsWith('NOV')) return 'NOVIEMBRE';
+    if (m.startsWith('DIC')) return 'DICIEMBRE';
+    return m;
+  }
+
   // DOM Element References
   const els = {
     loadingOverlay: document.getElementById('loadingOverlay'),
@@ -264,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!fullText.includes(f.search)) return false;
       }
 
-      if (f.mes && s.mesRequerido !== f.mes) return false;
+      if (f.mes && normalizarMes(s.mesRequerido) !== normalizarMes(f.mes)) return false;
       if (f.cliente && s.cliente !== f.cliente) return false;
       if (f.inspector && (!s.inspectores || !s.inspectores.includes(f.inspector))) return false;
       if (f.ubicacion && s.ubicacion !== f.ubicacion) return false;
@@ -334,10 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     list.forEach(s => {
       // Mes — fallback: derive from fechaInspeccion if mesRequerido is empty
-      let mes = s.mesRequerido;
+      let mes = normalizarMes(s.mesRequerido);
       if (!mes && s.fechaInspeccion) {
         const mIdx = parseInt(s.fechaInspeccion.split('-')[1], 10) - 1;
-        const nombres = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+        const nombres = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SETIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
         if (mIdx >= 0 && mIdx <= 11) mes = nombres[mIdx];
       }
       if (!mes) mes = 'SIN MES';

@@ -18,6 +18,8 @@ const {
   MAPA_PRODUCTO,
   COORDS_PROVINCIA,
   MESES_ORDEN,
+  MESES_NOMBRE,
+  normalizarMes,
   extraerSector,
   resolverInspectores,
   resolverLugar,
@@ -120,7 +122,7 @@ async function generateData() {
       gastoReal,
       desviacion: gastoSolicitado > 0 ? Math.round(((gastoReal - gastoSolicitado) / gastoSolicitado) * 10000) / 100 : 0,
       unidadNegocio: gastosAsociados.length > 0 ? gastosAsociados[0].unidadNegocio : '',
-      mesRequerido: gastosAsociados.length > 0 ? gastosAsociados[0].mesRequerido : mesDesdeISO(o.fechaInspeccion),
+      mesRequerido: normalizarMes(gastosAsociados.length > 0 ? gastosAsociados[0].mesRequerido : mesDesdeISO(o.fechaInspeccion)),
       depositadoA: gastosAsociados.length > 0 ? gastosAsociados[0].depositadoA : '',
       desglose: gastosAsociados.length > 0 ? {
         pasajes: gastosAsociados.reduce((s, g) => s + g.pasajes, 0),
@@ -202,7 +204,7 @@ async function generateData() {
 
   const porMes = {};
   servicios.forEach(s => {
-    const mes = s.mesRequerido || 'SIN MES';
+    const mes = normalizarMes(s.mesRequerido) || 'SIN MES';
     if (!porMes[mes]) porMes[mes] = { count: 0, gastoReal: 0, gastoSolicitado: 0 };
     porMes[mes].count++;
     porMes[mes].gastoReal += s.gastoReal;
@@ -231,7 +233,7 @@ async function generateData() {
   const porcentajeAcreditados = totalServicios > 0 ? Math.round((serviciosAcreditados / totalServicios) * 1000) / 10 : 0;
 
   const filtros = {
-    meses: Object.keys(MESES_ORDEN),
+    meses: MESES_NOMBRE,
     sectores: [...new Set(servicios.map(s => s.sector))].sort(),
     acreditaciones: [...new Set(servicios.map(s => s.acreditacion))].filter(Boolean).sort(),
     ubicaciones: [...new Set(servicios.map(s => s.ubicacion).filter(u => u !== 'DESCONOCIDO'))].sort(),

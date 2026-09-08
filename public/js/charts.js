@@ -48,6 +48,12 @@ const DashboardCharts = (function() {
   }
 
 
+  const MESES_ORDEN = {
+    'ENERO': 1, 'FEBRERO': 2, 'MARZO': 3, 'ABRIL': 4,
+    'MAYO': 5, 'JUNIO': 6, 'JULIO': 7, 'AGOSTO': 8,
+    'SETIEMBRE': 9, 'SEPTIEMBRE': 9, 'OCTUBRE': 10, 'NOVIEMBRE': 11, 'DICIEMBRE': 12,
+  };
+
   /**
    * Render or update Monthly Evolution Chart (Services & Expenses)
    */
@@ -55,9 +61,11 @@ const DashboardCharts = (function() {
     const ctx = document.getElementById('chartMensual');
     if (!ctx) return;
 
-    const labels = Object.keys(agrupacionMes || {}).filter(m => m !== 'SIN MES');
-    const counts = labels.map(m => agrupacionMes[m].count || 0);
-    const gastosReales = labels.map(m => Math.round(agrupacionMes[m].gastoReal || 0));
+    const labels = Object.keys(agrupacionMes || {})
+      .filter(m => m !== 'SIN MES')
+      .sort((a, b) => (MESES_ORDEN[a] || 99) - (MESES_ORDEN[b] || 99));
+    const counts = labels.map(m => (agrupacionMes[m] && agrupacionMes[m].count) || 0);
+    const gastosReales = labels.map(m => Math.round((agrupacionMes[m] && agrupacionMes[m].gastoReal) || 0));
 
     if (_chartMensual) {
       _chartMensual.data.labels = labels;
