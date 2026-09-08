@@ -92,6 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize UI & Event Listeners
   initEventListeners();
 
+  // Pre-initialize Leaflet map immediately so it starts loading tiles early
+  if (typeof DashboardMap !== 'undefined') {
+    DashboardMap.init();
+  }
+
   // Connect to API and start live data stream
   Api.onStatus(handleApiStatus);
   Api.onData(handleApiData);
@@ -200,7 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fade out loading overlay
       if (els.loadingOverlay) {
         els.loadingOverlay.classList.add('fade-out');
-        setTimeout(() => { els.loadingOverlay.style.display = 'none'; }, 500);
+        setTimeout(() => {
+          els.loadingOverlay.style.display = 'none';
+          // Force map to recalculate size after overlay is removed
+          if (typeof DashboardMap !== 'undefined') {
+            DashboardMap.invalidateSize();
+            // Secondary invalidateSize after reflow settles
+            setTimeout(() => DashboardMap.invalidateSize(), 500);
+          }
+        }, 500);
       }
     } else if (status === 'error') {
       els.liveStatusBadge.className = 'badge badge--danger';

@@ -49,13 +49,21 @@ const DashboardMap = (function() {
    * Initialize Leaflet map with CartoDB tiles
    */
   function initMap() {
-    if (typeof L === 'undefined') {
-      console.warn('Leaflet (L) is not loaded.');
+    const container = document.getElementById('peruMap');
+    if (!container) {
+      console.warn('[Map] Container #peruMap not found in DOM');
       return;
     }
 
-    const container = document.getElementById('peruMap');
-    if (!container || _map) return;
+    if (_map) return; // Already initialized
+
+    if (typeof L === 'undefined') {
+      console.error('[Map] Leaflet (L) is NOT loaded — the CDN may be blocked or failed.');
+      container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#94a3b8;font-size:14px;text-align:center;padding:20px;">⚠️ No se pudo cargar el mapa.<br>Verifica tu conexión a internet y recarga la página (Ctrl+F5).</div>';
+      return;
+    }
+
+    console.log('[Map] Initializing Leaflet map...');
 
     try {
       _map = L.map('peruMap', {
@@ -74,11 +82,15 @@ const DashboardMap = (function() {
 
       _markersLayer = L.layerGroup().addTo(_map);
 
-      setTimeout(() => {
-        if (_map) _map.invalidateSize();
-      }, 200);
+      console.log('[Map] Leaflet map initialized successfully');
+
+      // Multiple invalidateSize calls at different intervals
+      setTimeout(() => { if (_map) _map.invalidateSize(); }, 200);
+      setTimeout(() => { if (_map) _map.invalidateSize(); }, 800);
+      setTimeout(() => { if (_map) _map.invalidateSize(); }, 2000);
     } catch (err) {
-      console.error('Error initializing map:', err);
+      console.error('[Map] Error initializing map:', err);
+      container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#ef4444;font-size:14px;text-align:center;padding:20px;">❌ Error al inicializar el mapa: ' + err.message + '</div>';
     }
   }
 
@@ -170,8 +182,19 @@ const DashboardMap = (function() {
     }, 150);
   }
 
+  /**
+   * Force the map to recalculate its size — needed when the container
+   * becomes visible (e.g., after a loading overlay is removed).
+   */
+  function invalidateSize() {
+    if (_map) {
+      _map.invalidateSize();
+    }
+  }
+
   return {
     init: initMap,
     updateMarkers,
+    invalidateSize,
   };
 })();
