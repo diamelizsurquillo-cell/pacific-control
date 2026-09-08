@@ -362,7 +362,10 @@
       "count": 103,
       "gastoReal": 22873.899999999994,
       "gastoSolicitado": 24399.5,
-      "coords": null
+      "coords": {
+        "lat": -5.0892,
+        "lng": -81.1145
+      }
     },
     {
       "nombre": "CHIMBOTE",
@@ -379,14 +382,20 @@
       "count": 1,
       "gastoReal": 418,
       "gastoSolicitado": 400,
-      "coords": null
+      "coords": {
+        "lat": -9.5261,
+        "lng": -77.5288
+      }
     },
     {
       "nombre": "AMAZONAS",
       "count": 2,
       "gastoReal": 300,
       "gastoSolicitado": 300,
-      "coords": null
+      "coords": {
+        "lat": -6.2308,
+        "lng": -77.8708
+      }
     },
     {
       "nombre": "DESCONOCIDO",
@@ -400,14 +409,20 @@
       "count": 7,
       "gastoReal": 482.5,
       "gastoSolicitado": 567,
-      "coords": null
+      "coords": {
+        "lat": -13.532,
+        "lng": -71.9675
+      }
     },
     {
       "nombre": "IQUITOS",
       "count": 1,
       "gastoReal": 0,
       "gastoSolicitado": 0,
-      "coords": null
+      "coords": {
+        "lat": -3.7491,
+        "lng": -73.2538
+      }
     },
     {
       "nombre": "CALLAO",
@@ -444,7 +459,10 @@
       "count": 4,
       "gastoReal": 229.9,
       "gastoSolicitado": 230,
-      "coords": null
+      "coords": {
+        "lat": -3.7491,
+        "lng": -73.2538
+      }
     },
     {
       "nombre": "CHILCA",
@@ -481,7 +499,10 @@
       "count": 0,
       "gastoReal": 140,
       "gastoSolicitado": 140,
-      "coords": null
+      "coords": {
+        "lat": -12.2833,
+        "lng": -76.8681
+      }
     },
     {
       "nombre": "CUZCO",
@@ -19623,5 +19644,5 @@
       "depositadoA": ""
     }
   ],
-  "timestamp": "2026-09-08T14:28:21.606Z"
+  "timestamp": "2026-09-08T14:35:54.374Z"
 }
