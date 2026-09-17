@@ -483,6 +483,34 @@ table.dataTable thead th {
   white-space: nowrap;
 }
 
+table.dataTable thead th[data-sort] {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+table.dataTable thead th[data-sort]:hover {
+  color: var(--primary-400);
+  background-color: rgba(56, 189, 248, 0.05);
+}
+
+table.dataTable thead th .sort-icon {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.7rem;
+  opacity: 0.45;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+table.dataTable thead th.sort-active {
+  color: var(--primary-400);
+}
+
+table.dataTable thead th.sort-active .sort-icon {
+  opacity: 1;
+  font-weight: bold;
+}
+
 table.dataTable tbody td {
   padding: var(--space-3);
   font-size: var(--text-sm);

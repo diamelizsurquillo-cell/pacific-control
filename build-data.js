@@ -134,6 +134,23 @@ async function generateData() {
     };
   });
 
+  // Sort servicios by date descending (newest first)
+  servicios.sort((a, b) => {
+    const dateA = a.fechaInspeccion || '';
+    const dateB = b.fechaInspeccion || '';
+    if (dateA && dateB) {
+      if (dateA !== dateB) return dateB.localeCompare(dateA);
+    } else if (dateB) {
+      return 1;
+    } else if (dateA) {
+      return -1;
+    }
+    const numA = a.nroInspeccion || 0;
+    const numB = b.nroInspeccion || 0;
+    if (numA !== numB) return numB - numA;
+    return (b.nroActa || '').localeCompare(a.nroActa || '');
+  });
+
   const gastosHuerfanos = gastos.filter(g => !matchedCotizaciones.has(g.cotizacion.trim()));
   const totalServicios = servicios.length;
   const clientesUnicos = new Set(servicios.map(s => s.cliente).filter(isValidCliente)).size;

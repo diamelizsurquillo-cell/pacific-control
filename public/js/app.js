@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
       page: 1,
       pageSize: 10,
     },
+    sort: {
+      column: 'fechaInspeccion',
+      order: 'desc',
+    },
     lastUpdated: null,
   };
 
@@ -180,6 +184,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export CSV
     els.btnExportCSV.addEventListener('click', exportToCSV);
 
+    // Table Column Sorting
+    const table = document.getElementById('servicesTable');
+    if (table) {
+      const headers = table.querySelectorAll('thead th[data-sort]');
+      headers.forEach(th => {
+        th.addEventListener('click', () => {
+          const col = th.getAttribute('data-sort');
+          if (state.sort.column === col) {
+            state.sort.order = state.sort.order === 'desc' ? 'asc' : 'desc';
+          } else {
+            state.sort.column = col;
+            state.sort.order = (col === 'fechaInspeccion' || col === 'gastoReal' || col === 'nroActa') ? 'desc' : 'asc';
+          }
+          state.pagination.page = 1;
+          sortFilteredServicios();
+          renderTable();
+        });
+      });
+    }
+
     // Modal Close
     els.modalCloseBtn.addEventListener('click', () => {
       els.detailModal.style.display = 'none';
@@ -306,10 +330,90 @@ document.addEventListener('DOMContentLoaded', () => {
       return true;
     });
 
+    // Sort table services (default: fechaInspeccion descending)
+    sortFilteredServicios();
+
     // Recompute Metrics & Aggregations
     renderKPIs();
     updateChartsAndMap();
     renderTable();
+  }
+
+  /**
+   * Sort filtered servicios based on current state.sort settings
+   */
+  function sortFilteredServicios() {
+    const col = state.sort.column || 'fechaInspeccion';
+    const isDesc = state.sort.order === 'desc';
+    const order = isDesc ? -1 : 1;
+
+    state.filteredServicios.sort((a, b) => {
+      let valA = a[col];
+      let valB = b[col];
+
+      if (col === 'fechaInspeccion') {
+        valA = valA || '';
+        valB = valB || '';
+        if (valA && valB) {
+          if (valA !== valB) return valA.localeCompare(valB) * order;
+        } else if (valA) {
+          return -1 * order;
+        } else if (valB) {
+          return 1 * order;
+        }
+        // Secondary sort: nroInspeccion desc
+        const numA = a.nroInspeccion || 0;
+        const numB = b.nroInspeccion || 0;
+        if (numA !== numB) return (numA - numB) * order;
+        return (a.nroActa || '').localeCompare(b.nroActa || '') * order;
+      }
+
+      if (col === 'nroActa') {
+        const numA = a.nroInspeccion || 0;
+        const numB = b.nroInspeccion || 0;
+        if (numA && numB && numA !== numB) return (numA - numB) * order;
+        return (a.nroActa || '').localeCompare(b.nroActa || '') * order;
+      }
+
+      if (col === 'gastoReal' || col === 'gastoSolicitado') {
+        const nA = typeof valA === 'number' ? valA : 0;
+        const nB = typeof valB === 'number' ? valB : 0;
+        return (nA - nB) * order;
+      }
+
+      if (col === 'inspectores') {
+        valA = (a.inspectores && a.inspectores.length > 0) ? a.inspectores.join(' ') : (a.inspectorPrincipal || '');
+        valB = (b.inspectores && b.inspectores.length > 0) ? b.inspectores.join(' ') : (b.inspectorPrincipal || '');
+      }
+
+      if (typeof valA === 'string' && typeof valB === 'string') {
+        return valA.localeCompare(valB, 'es', { sensitivity: 'base' }) * order;
+      }
+
+      if (valA == null && valB != null) return 1 * order;
+      if (valA != null && valB == null) return -1 * order;
+
+      return 0;
+    });
+
+    updateSortHeaderIcons();
+  }
+
+  function updateSortHeaderIcons() {
+    const table = document.getElementById('servicesTable');
+    if (!table) return;
+    const headers = table.querySelectorAll('thead th[data-sort]');
+    headers.forEach(th => {
+      const col = th.getAttribute('data-sort');
+      const iconSpan = th.querySelector('.sort-icon');
+      if (col === state.sort.column) {
+        th.classList.add('sort-active');
+        if (iconSpan) iconSpan.textContent = state.sort.order === 'desc' ? '▼' : '▲';
+      } else {
+        th.classList.remove('sort-active');
+        if (iconSpan) iconSpan.textContent = '↕';
+      }
+    });
   }
 
   /**
@@ -529,6 +633,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render pagination buttons
     renderPaginationControls(currentPage, totalPages);
+
+    // Sync header sort icons
+    updateSortHeaderIcons();
   }
 
   function renderPaginationControls(currentPage, totalPages) {
